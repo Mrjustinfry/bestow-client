@@ -1,0 +1,12 @@
+language: node_js
+node_js: node
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: heroku
+  api_key:
+    secure: RiRH00gazAPWi68GpYdG8yu5DnpdMPBneRYlFiIlsz3WfSJACPkKe7Hw7+hs2678IFPdRh4Xddo5eG5N1rT0kg6Anwt9hZXLkWNyK8aD3z069lyoN/lJrESO94uiqdrZ9ODnAmCG9Tuzl22XcILE2NGNLeNpUV6/CJTeQQjP0fS7gmvHB/KdxywEgzf2a8R2YqfwcmSbmchUcTFfKoNkSsXhqo9uBw6RI/WWMWtCNrxZYw3xyNcMw03JumRawXJY1gBLDv7AEj0IXiPMMWnzCetpyc7UUnP0tq31mFpRJbQHIecGiUu9T7c165xWDKnKaG7o9P1kXrWCH2wQo5raiugmfUag01hpRfFxc/SdRfQ7xExUllOLU3PdbSVC8CmfE/NuOclivoKvphl2/vBAbg4b3pDA4F9M2abyGm+yB4peq8qry4EO9TCVCkgQ3d1wLiW5KpHM/3gbjD2DnR/f41aJ5+77sbDA0bI5pZ0WFBD1FUgJX6rSqprXVgP+T09fJoU7EiPGT97M84JDSLBIuzJCH1owavNgMkDgozhAelUN7jSeT6hFaGw/ZFL+fDHBUYOuAzeQZh3oYbqEBw/GLnNIcWyikVJOniXl6HmlJ8Ps1BsMwD7P2KMW5/MA54up3F3UaROM+A4ImWghqyAAzCc3tgs+ug84RX09cr0YeoM=
+  app: bestow-client
+  on:
+    repo: Mrjustinfry/bestow-client
