@@ -1,0 +1,22 @@
+.items {
+  width: 85%;
+  margin: auto;
+  padding: 1em;
+}
+
+.Bestowed, .Borrowed {
+  list-style: none;
+  text-align: center;
+  border-radius: 5em;
+  padding: 1em;
+  margin: 1em;
+  background-color: #f114f863;
+  box-shadow: 3px 3px 16px 0px lightslategrey;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  font-size: large;
+}
+
+.Borrowed {
+  background-color: #5c6bfda1;
+}
