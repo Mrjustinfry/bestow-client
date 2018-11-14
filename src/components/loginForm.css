@@ -1,0 +1,16 @@
+.loginForm {
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+  margin: auto;
+  padding: 3%;
+  text-align: center;
+    color: purple;
+}
+input {
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+  border: 1px solid purple;
+  background-color: white;
+  padding: 2%;
+  color: purple;
+}

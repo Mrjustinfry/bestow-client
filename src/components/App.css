@@ -1,0 +1,11 @@
+.logo {
+  height: 50%;
+  width: 50%;
+  margin: auto;
+}
+
+main {
+  display: flex;
+  flex-flow: column;
+  margin-top: 10em;
+}
