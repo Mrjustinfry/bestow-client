@@ -7,6 +7,7 @@ class List extends Component {
       super(props);
 
       this.state = {
+          editing: false,
           items: [
               {
                 who: 'karen',
@@ -108,9 +109,16 @@ class List extends Component {
       };
   }
 
+  setEditing(editing) {
+      this.setState({
+          editing
+      });
+  }
+
   render() {
+    if(!this.state.editing) {
     const items = this.state.items.map((item, index) => (
-        <li className={item.how} key={index}>
+        <li className={item.how} key={index} onClick={() => this.setEditing(true)}>
           {item.what}
         </li>
     ));
@@ -122,6 +130,19 @@ class List extends Component {
         </div>
     );
   }
+  return (
+    <div className="itemCard">
+      <p className="close" onClick={() => this.setEditing(false)}>close</p>
+      <h1>item</h1>
+      <p className="whoItem"><img src="/who.png" alt="who" className="whoImg" />  WHO</p>
+      <p className="whenItem"><img src="/when.png" alt="when" className="whenImg" />  WHEN</p>
+      <div className="btns">
+      <button className="editBtn"></button>
+      <button className="trashBtn"></button>
+      </div>
+    </div>
+  );
+}
 }
 
 List.defaultProps = {

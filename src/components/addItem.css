@@ -1,12 +1,75 @@
 .itemForm {
-    margin: auto;
-    width: inherit;
+  margin: auto;
+  text-align: center;
+  border-radius: 2em;
+  padding: 1em;
+  background-color: mintcream;
+  -webkit-box-shadow: 3px 3px 16px 0px lightslategrey;
+  -moz-box-shadow: 3px 3px 16px 0px lightslategrey;
+  -o-box-shadow: 3px 3px 16px 0px lightslategrey;
+  box-shadow: 3px 3px 16px 0px lightslategrey;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  font-size: large;
+  position: fixed;
+  bottom: 10%;
+  right: 2%;
+  height: 15em;
+  width: 20em;
+  transition-duration: 500ms;
+}
+
+.close {
     text-align: center;
     border-radius: 5em;
-    padding: 1em;
-    background-color: white;
-    box-shadow: 3px 3px 16px 0px lightslategrey;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: bold;
-    font-size: large;
+    background-color: lavender;
+    padding: 1%;
+    color: purple;
+}
+
+.close:hover {
+  cursor: pointer;
+  background-color: #d39df7;
+  transition-duration: 300ms;
+}
+
+input {
+  padding: 2%;
+  width: 85%;
+  margin: 2%;
+  border-radius: 20px;
+  border: 1px solid purple;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  font-size: medium;
+  color: purple;
+  text-indent: 30px;
+}
+
+.borrowBtn, .bestowBtn {
+  padding: 3%;
+  border: none;
+  border-radius: 3em;
+  width: 45%;
+  margin: 2%;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  font-size: medium;
+  background-color: #c567e6;
+}
+
+.borrowBtn {
+  background-color: #696ff9;
+}
+
+.borrowBtn:hover {
+  cursor: pointer;
+  background-color: #a8baf6;
+  transition-duration: 300ms;
+}
+
+.bestowBtn:hover {
+  cursor: pointer;
+  background-color: #d39df7;
+  transition-duration: 300ms;
 }

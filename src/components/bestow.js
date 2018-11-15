@@ -12,10 +12,6 @@ class Bestow extends Component {
   render() {
       return (
           <div className="bestow">
-          <header><img src="/bestowI.png" alt="icon" className="icon" /></header>
-          <SignupForm />
-          <AddItem />
-          <Card />
           <List />
           <AddButton />
           </div>
@@ -24,3 +20,8 @@ class Bestow extends Component {
 }
 
 export default Bestow;
+          //<header><img src="/bestowI.png" alt="icon" className="icon" /></header>
+          /*<SignupForm />
+          <AddItem />
+          <Card />
+          <List />*/

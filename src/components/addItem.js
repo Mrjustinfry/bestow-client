@@ -3,20 +3,30 @@ import React, { Component } from 'react';
 import './addItem.css';
 
 class AddItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        editing: false
+    }
+}
+
+setEditing(editing) {
+    this.setState({
+        editing
+    });
+}
   render() {
       return (
           <div className="itemForm">
-            <label>Who</label>
-            <input type="text" />
+            <p className="close" onClick={() => this.setEditing(false)}>close</p>
+            <label><input type="text" placeholder="who..." /></label>
             <br />
-            <label>What</label>
-            <input type="text" />
+            <label><input type="text" placeholder="what..." /></label>
             <br />
-            <label>When</label>
-            <input type="date" />
+            <label><input type="date" placeholder="when..." /></label>
             <br />
-            <button>Borrowed</button>
-            <button>Bestowed</button>
+            <button onSubmit={() => this.setEditing(false)} className="borrowBtn">Borrowed</button>
+            <button onSubmit={() => this.setEditing(false)} className="bestowBtn">Bestowed</button>
           </div>
       );
   }
