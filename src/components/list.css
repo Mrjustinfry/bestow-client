@@ -4,6 +4,10 @@
   padding: 1em;
 }
 
+.listContainer {
+    margin-top: 5.5em;
+}
+
 .Bestowed, .Borrowed {
   list-style: none;
   text-align: center;

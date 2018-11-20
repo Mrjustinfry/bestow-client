@@ -8,6 +8,12 @@ class SignupForm extends Component {
           <div className="signupForm">
             <form>
               <h4>Sign up now</h4>
+              <label>First name
+              <input type="text" /></label>
+              <br />
+              <label>Last name
+              <input type="text" /></label>
+              <br />
               <label>Username
               <input type="text" /></label>
               <br />

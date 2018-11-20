@@ -1,0 +1,17 @@
+
+header {
+  width: 100%;
+  position: fixed;
+  top: -1em;
+  right: 0;
+  margin: auto 0;
+  background-color: mintcream;
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  z-index: 3;
+}
+
+h2 {
+      margin-left: 1em;
+      padding: .5em;
+}

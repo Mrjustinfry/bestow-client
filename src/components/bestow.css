@@ -1,14 +1,1 @@
-.icon {
-  height: 40px;
-  width: 40px;
-  padding: 1%;
-}
 
-header {
-  width: 100%;
-  position: fixed;
-  top: 0;
-  right: 0;
-  margin: auto 0;
-  background-color: rgba(183, 141, 249, 0.59);
-}

@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 
 import './loginForm.css';
 
 class LoginForm extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
       return (
           <div className="loginForm">
@@ -22,4 +27,6 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+
+
+export default connect()(LoginForm);

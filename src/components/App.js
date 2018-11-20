@@ -1,39 +1,34 @@
 import React, { Component } from 'react';
-//import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import LoginForm from './loginForm';
-import Footer from './footer';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {connect} from 'react-redux';
+
+import Bestow from './bestow';
+import Landing from './landing';
 
 import './App.css';
+import './loginForm.css';
+import './bestow.css';
+import './card.css';
 
 class App extends Component {
   render() {
     return (
-            <div className="app">
+      <Router>
+            <div>
                 <main>
-                <img src="/bestowL.png" alt="logo" className="logo" />
-                <LoginForm />
+                  <Switch>
+                    <Route exact path="/" component={Landing} />
+                    <Route exact path="/bestow" component={Bestow} />
+                  </Switch>
                 </main>
-                <Footer />
             </div>
+        </Router>
     );
   }
 }
-/*
-class App extends Component {
-  render() {
-    return (
-        //<Router>
-            <div className="app">
-                <main>
-                <p>hello</p>
-                //add "exact path" and "component" to routes
-                    //<Route  />
-                    //<Route  />
-                </main>
-            </div>
-        //</Router>
-    );
-  }
-}
-*/
-export default App;
+
+const mapStateToProps = state => ({
+    items: state.items
+});
+
+export default connect(mapStateToProps)(App);
