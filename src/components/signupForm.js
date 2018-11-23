@@ -7,7 +7,7 @@ class SignupForm extends Component {
       return (
           <div className="signupForm">
             <form>
-              <h4>Sign up now</h4>
+              <h4>Sign up now!</h4>
               <label>First name
               <input type="text" /></label>
               <br />

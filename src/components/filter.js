@@ -5,16 +5,22 @@ import {setFilter} from '../actions/actions';
 import './filter.css';
 
 export class Filter extends Component {
+constructor(props) {
+  super(props);
+
+this.setFilter = this.setFilter.bind(this);
+}
 
 setFilter(type) {
-    this.props.dispatch(setFilter(type));
+   this.props.setFilter(type);
 }
+
 
 
   render() {
       return (
         <div className="filters">
-        <ul>
+        <ul className="filterList">
           <li className="filter"><img src="who.png" value="who" alt="who" className="icons"
           onClick={() => this.setFilter("who")} /></li>
           <li className="filter"><img src="what.png" value="what" alt="what" className="icons"
@@ -27,13 +33,10 @@ setFilter(type) {
   }
 }
 
-Filter.defaultProps = {
-  filter: "what"
-}
 
 
 const mapStateToProps = state => ({
     filter: state.filter
 });
 
-export default connect(mapStateToProps)(Filter);
+export default connect(mapStateToProps, {setFilter})(Filter);

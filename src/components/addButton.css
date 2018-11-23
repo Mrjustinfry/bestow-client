@@ -1,4 +1,4 @@
-footer {
+.addFoot {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -35,5 +35,5 @@ footer {
   background-position: 5px 5px;
   background-repeat: no-repeat;
   background-size: 7%;
-  text-indent: 12px;
+  text-indent: 12px !important;
 }

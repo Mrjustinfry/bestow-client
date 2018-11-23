@@ -6,11 +6,27 @@
   text-align: center;
     color: purple;
 }
-input {
+.logInput {
   font-family: 'Nunito', sans-serif;
   font-weight: bold;
   border: 1px solid purple;
   background-color: white;
   padding: 2%;
   color: purple;
+  border-radius: 5px;
+  margin: auto;
+  width: 12em;
+}
+
+.logBtn {
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+  border: 1px solid purple;
+  padding: 2%;
+  border-radius: 5px;
+  margin: auto;
+  width: 12.5em;
+  margin-top: 1em;
+  color: white;
+  background-color: #b83dba;
 }

@@ -8,20 +8,25 @@
     margin-top: 5.5em;
 }
 
-.Bestowed, .Borrowed {
+.bestowed, .borrowed {
   list-style: none;
-  text-align: center;
-  border-radius: 5em;
   padding: 1em;
   margin: 1em;
   background-color: #f114f863;
+  -webkit-box-shadow: 3px 3px 16px 0px lightslategrey;
   box-shadow: 3px 3px 16px 0px lightslategrey;
   font-family: 'Quicksand', sans-serif;
   font-weight: bold;
   font-size: large;
+  background-color: #ffffff;
+  background-image: linear-gradient(#f114f863, mintcream);
 }
 
-.Borrowed {
+.bestowed:hover, .borrowed:hover {
+    background-image: linear-gradient(#f114f863, #f114f863);
+}
+
+.borrowed {
   background-color: #5c6bfda1;
 }
 

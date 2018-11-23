@@ -7,14 +7,19 @@
 }
 
 .icons {
-  height: 2em;
-  width: 2em;
+  height: 1.5em;
+  width: 1.5em;
   padding: 1em;
   border-radius: 1em;
 }
 
+.filterList {
+      float: left;
+}
+
 .icons:hover {
   box-shadow: inset 0px 0px 20px purple;
+  transition-duration: 500ms;
 }
 
 .filter {

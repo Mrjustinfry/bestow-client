@@ -9,8 +9,9 @@ import './header.css';
 export class Header extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {name: "Justin", filter: this.props.filter}
+    this.state = {
+      name:'Justin'
+    }
   }
 giveGreeting() {
   let today = new Date();
@@ -34,8 +35,8 @@ giveGreeting() {
     let message = this.giveGreeting();
       return (
         <header className="head">
-        <h2>{message} {this.state.name}!</h2>
-        <Filter filter={this.props.filter} />
+        <h2 className="greeting">{message} {this.state.name}!</h2>
+        <Filter />
         </header>
       );
   }

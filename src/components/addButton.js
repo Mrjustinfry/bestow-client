@@ -12,7 +12,7 @@ class AddButton extends Component {
     this.state = {
         editing: false
     }
-    this.addItem = this.addItem.bind(this);
+    //this.addItem = this.addItem.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 }
 
@@ -21,18 +21,24 @@ setEditing(editing) {
         editing
     });
 }
-
-addItem(items) {
-     this.props.dispatch(addItem(items));
+/*
+addItem(item) {
+  console.log("Add item:", item)
+     this.props.addItem(item);
 }
-
+*/
 onSubmit(e) {
     e.preventDefault();
     const who = this.whoInput.value.trim();
     const what = this.whatInput.value.trim();
     const when = this.whenInput.value.trim();
-    const how = this.howInput.id;
-    this.addItem({who, what, when, how});
+    const how = e.target.id;
+    this.props.addItem({
+      who: who,
+      what: what,
+      when: when,
+      how: how
+    });
     this.whoInput.value = '';
     this.whatInput.value = '';
     this.whenInput.value = '';
@@ -43,26 +49,24 @@ onSubmit(e) {
     if (!this.state.editing) {
       return (
           <div className="addButton">
-          <footer><button className="addBtn" onClick={() => this.setEditing(true)}>+</button></footer>
+          <footer className="addFoot"><button className="addBtn" onClick={() => this.setEditing(true)}>+</button></footer>
           </div>
       );
   }
   return (
-        <form className="itemForm" onSubmit={this.getItems}>
+        <form className="itemForm">
           <p className="close" onClick={() => this.setEditing(false)}>close</p>
-          <label><input type="text" className="whoIn" ref={input => this.whoInput = input} /></label>
+          <label><input type="text" className="whoIn itemIn" ref={input => this.whoInput = input} /></label>
           <br />
-          <label><input type="text" className="whatIn" ref={input => this.whatInput = input} /></label>
+          <label><input type="text" className="whatIn itemIn" ref={input => this.whatInput = input} /></label>
           <br />
-          <label><input type="date" className="whenIn" ref={input => this.whenInput = input} /></label>
+          <label><input type="date" className="whenIn itemIn" ref={input => this.whenInput = input} /></label>
           <br />
           <button
           onClick={this.onSubmit}
-          ref={value => this.howInput = value}
           className="borrowBtn" id="borrowed" type="button">Borrowed</button>
           <button
           onClick={this.onSubmit}
-          ref={value => this.howInput = value}
           className="bestowBtn" id="bestowed" type="button">Bestowed</button>
         </form>
     );
@@ -71,12 +75,12 @@ onSubmit(e) {
 
 
 const mapStateToProps = state => ({
-  items: [
-    state.who,
-    state.what,
-    state.when,
-    state.how
-  ]
+  items: {
+    who: state.who,
+    what: state.what,
+    when: state.when,
+    how: state.how
+  }
 });
 
-export default connect(mapStateToProps)(AddButton);
+export default connect(mapStateToProps, {addItem, getItems})(AddButton);

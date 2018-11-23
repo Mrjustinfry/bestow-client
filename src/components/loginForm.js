@@ -14,13 +14,13 @@ class LoginForm extends Component {
             <form>
               <label>Username
               <br />
-              <input type="text" /></label>
+              <input type="text" className="logInput" /></label>
               <br />
               <label>Password
               <br />
-              <input type="password" /></label>
+              <input type="password" className="logInput" /></label>
               <br />
-              <button>Submit</button>
+              <button className="logBtn">Sign In</button>
             </form>
           </div>
       );

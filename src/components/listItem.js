@@ -2,24 +2,26 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
 import Card from './card';
+import Item from './item';
 
-import {addItem, setFilter} from '../actions/actions';
+import {setFilter, addItem, getItems} from '../actions/actions';
 
 import './list.css';
 
 class ListItem extends Component {
 constructor(props) {
   super(props);
-  this.props.dispatch(setFilter());
+
   this.state = {
-    isHidden: true,
+    isHidden: true
   }
-  this.toggleHidden = this.toggleHidden.bind(this);
+
+ this.toggleHidden = this.toggleHidden.bind(this);
 }
 
 
 addItem(items) {
-    this.props.dispatch(addItem(items));
+    this.props.addItem(items);
 }
 
   setEditing(editing) {
@@ -34,28 +36,31 @@ addItem(items) {
     })
   }
 
-
-    render() {
-      console.log(this.props.filter);
-      let  displayItems = () => {
-             if (this.props.filter === "what"){
-               return this.props.items.what;
-             } else if (this.props.filter === "who") {
-               return this.props.items.who;
-             } else if (this.props.filter === "when") {
-               return this.props.items.when;
-             }
+  componentDidUpdate(prevProps) {
+   if (this.props.items !== prevProps.items) {
+     this.props.getItems();
+   }
+ }
+/*
+   displayItems = () => {
+         if (this.props.filter === "what"){
+           let output = <p>{item.what}</p>
+         } else if (this.props.filter === "who") {
+           let output = <p>{item.who}</p>
+         } else if (this.props.filter === "when") {
+           let output = <p>{item.when}</p>
          }
-         console.log(displayItems);
-      const items = this.props.items.map((item, index) => (
-        <div className="wrapper">
-          <li className={item.how} key={item.id} onClick={() => this.toggleHidden()}>
-            {item.what}
-            {!this.state.isHidden && <Card />}
-          </li>
-          </div>
-      ))
-    return [items]
+         return output;
+     }
+*/
+    render() {
+    return (
+      <div className="itemList">
+        <ul className="items">
+          <Item />
+        </ul>
+      </div>
+    )
   };
 }
 
@@ -64,4 +69,4 @@ const mapStateToProps = state => ({
     filter: state.filter
 });
 
-export default connect(mapStateToProps)(ListItem);
+export default connect(mapStateToProps, {addItem})(ListItem);

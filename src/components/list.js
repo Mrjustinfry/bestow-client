@@ -1,46 +1,16 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
 
-import ListItem from './listItem';
+import Item from './item';
 
 import './list.css';
 
-class List extends Component {
-  constructor(props) {
-      super(props);
+export default function List(props) {
 
-      this.state = {
-          editing: false,
-      };
-  }
-
-  setEditing(editing) {
-      this.setState({
-          editing
-      });
-  }
-
-
-  render() {
     return (
         <div className="listContainer">
             <ul className="items">
-                <ListItem />
+                <Item item={props.items}  />
             </ul>
         </div>
     );
 }
-}
-
-List.defaultProps = {
-  who: 'example',
-  what: 'something',
-  when: '##-##-##',
-  how: 'Bestowed'
-};
-
-const mapStateToProps = state => ({
-    items: state.items
-});
-
-export default connect(mapStateToProps)(List);

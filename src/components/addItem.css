@@ -1,22 +1,30 @@
 .itemForm {
-  margin: auto;
-  text-align: center;
-  border-radius: 2em;
-  padding: 1em;
-  background-color: mintcream;
-  -webkit-box-shadow: 3px 3px 16px 0px lightslategrey;
-  -moz-box-shadow: 3px 3px 16px 0px lightslategrey;
-  -o-box-shadow: 3px 3px 16px 0px lightslategrey;
-  box-shadow: 3px 3px 16px 0px lightslategrey;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: bold;
-  font-size: large;
-  position: fixed;
-  bottom: 10%;
-  right: 2%;
-  height: 15em;
-  width: 20em;
-  transition-duration: 500ms;
+    margin: auto;
+    text-align: center;
+    border-radius: 2em;
+    padding: 1em;
+    background-color: mintcream;
+    -webkit-box-shadow: 3px 3px 16px 0px lightslategrey;
+    -moz-box-shadow: 3px 3px 16px 0px lightslategrey;
+    -o-box-shadow: 3px 3px 16px 0px lightslategrey;
+    box-shadow: 3px 3px 16px 0px lightslategrey;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    font-size: large;
+    position: fixed;
+    bottom: 10%;
+    right: 2%;
+    height: 15em;
+    width: 20em;
+    transition-duration: 500ms;
+}
+
+.addBtn:hover {
+   font-size: large;
+   font-weight: bolder;
+   transition-timing-function: ease-in-out;
+   transform: rotate(180deg);
+   transition-duration: 500ms;
 }
 
 .close {
@@ -33,7 +41,7 @@
   transition-duration: 300ms;
 }
 
-input {
+.itemIn {
   padding: 2%;
   width: 85%;
   margin: 2%;
