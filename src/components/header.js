@@ -35,7 +35,7 @@ giveGreeting() {
     let message = this.giveGreeting();
       return (
         <header className="head">
-        <h2 className="greeting">{message} {this.state.name}!</h2>
+        <h2 className="greeting">{message} {this.props.users[0].firstName}!</h2>
         <Filter />
         </header>
       );
@@ -43,6 +43,7 @@ giveGreeting() {
 }
 
 const mapStateToProps = (state) => ({
+  users: state.users,
   filter: state.filter
 });
 

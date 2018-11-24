@@ -29,4 +29,4 @@ class LoginForm extends Component {
 
 
 
-export default connect()(LoginForm);
+export default connect(store)(LoginForm);

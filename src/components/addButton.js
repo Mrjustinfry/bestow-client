@@ -12,7 +12,6 @@ class AddButton extends Component {
     this.state = {
         editing: false
     }
-    //this.addItem = this.addItem.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 }
 
@@ -21,12 +20,7 @@ setEditing(editing) {
         editing
     });
 }
-/*
-addItem(item) {
-  console.log("Add item:", item)
-     this.props.addItem(item);
-}
-*/
+
 onSubmit(e) {
     e.preventDefault();
     const who = this.whoInput.value.trim();
@@ -42,7 +36,7 @@ onSubmit(e) {
     this.whoInput.value = '';
     this.whatInput.value = '';
     this.whenInput.value = '';
-    console.log(who,what,when,how);
+    this.setEditing(!this.state.editing);
 }
 
   render() {

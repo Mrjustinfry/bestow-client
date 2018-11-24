@@ -6,8 +6,8 @@ import Item from './item';
 
 import {setFilter, addItem, getItems} from '../actions/actions';
 
-import './list.css';
-
+import './list.css';///Delete this
+/*
 class ListItem extends Component {
 constructor(props) {
   super(props);
@@ -41,18 +41,7 @@ addItem(items) {
      this.props.getItems();
    }
  }
-/*
-   displayItems = () => {
-         if (this.props.filter === "what"){
-           let output = <p>{item.what}</p>
-         } else if (this.props.filter === "who") {
-           let output = <p>{item.who}</p>
-         } else if (this.props.filter === "when") {
-           let output = <p>{item.when}</p>
-         }
-         return output;
-     }
-*/
+
     render() {
     return (
       <div className="itemList">
@@ -68,5 +57,5 @@ const mapStateToProps = state => ({
     items: state.items,
     filter: state.filter
 });
-
+*/
 export default connect(mapStateToProps, {addItem})(ListItem);

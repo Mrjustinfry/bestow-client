@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import Bestow from './bestow';
 import Landing from './landing';
 import Info from './info'
+import Card from './card';
 
 import './App.css';
 import './loginForm.css';
@@ -21,6 +22,7 @@ class App extends Component {
                     <Route exact path="/" component={Landing} />
                     <Route exact path="/bestow" component={Bestow} />
                     <Route exact path="/info" component={Info} />
+                    <Route exact path="/card/:cardId" component={Card} />
                   </Switch>
                 </main>
             </div>
@@ -30,6 +32,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
+    users: state.users,
     items: state.items
 });
 

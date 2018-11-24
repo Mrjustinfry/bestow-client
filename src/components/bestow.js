@@ -24,4 +24,4 @@ const mapStateToProps = state => ({
     items: state.items
 });
 
-export default connect(mapStateToProps)(Bestow);
+export default connect(mapStateToProps, store)(Bestow);

@@ -1,16 +1,18 @@
 .itemCard {
-  margin: 5em auto;
-  width: inherit;
-  text-align: left;
-  border-radius: 1em;
+  list-style: none;
   padding: 1em;
+  margin: 1em;
   background-color: #f114f863;
   -webkit-box-shadow: 3px 3px 16px 0px lightslategrey;
   box-shadow: 3px 3px 16px 0px lightslategrey;
   font-family: 'Quicksand', sans-serif;
   font-weight: bold;
   font-size: large;
-  height: auto;
+  background-color: #ffffff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f114f863), to(mintcream));
+  background-image: -webkit-linear-gradient(#f114f863, mintcream);
+  background-image: -o-linear-gradient(#f114f863, mintcream);
+  background-image: linear-gradient(#f114f863, mintcream);
 }
 
 h1 {
