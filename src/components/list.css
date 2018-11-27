@@ -1,49 +1,54 @@
 .items {
-  width: 85%;
-  margin: auto;
   padding: 1em;
 }
 
 .listContainer {
-    margin-top: 5.5em;
+  margin-top: 5.5em;
 }
 
 .bestowed, .borrowed {
   list-style: none;
   padding: 1em;
-  margin: 1em;
-  background-color: #f114f863;
+  margin: .5em;
+  background-color: #f29bf5;
   -webkit-box-shadow: 3px 3px 16px 0px lightslategrey;
   box-shadow: 3px 3px 16px 0px lightslategrey;
   font-family: 'Quicksand', sans-serif;
   font-weight: bold;
   font-size: large;
-  background-color: #ffffff;
-  background-image: linear-gradient(#f114f863, mintcream);
+  border-bottom-right-radius: 2em;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
 }
 
-.bestowed:hover, .borrowed:hover {
-    background-image: linear-gradient(#f114f863, #f114f863);
+.bestowed:hover {
+  font-weight: bolder;
+  background-color: #fdcafff7;
+  transition-duration: 500ms;
+}
+
+.borrowed:hover {
+  font-weight: bolder;
+  background-color: #b380fb9e;
+  transition-duration: 500ms;
 }
 
 .borrowed {
-  background-color: #5c6bfda1;
+  background-color: #b380fb;
 }
 
 .editBtn {
-  background-image: url(/edit.png);
+  background-image: url('/edit.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: 2em;
-  height: 4em;
-  width: 4em;
-  border-radius: 10em;
+  height: 2.5em;
+  width: 48%;
   border: none;
-  font-size: small;
-  background-color: mintcream;
-  -webkit-box-shadow: 1px 2px 10px 0px darkslategrey;
-  box-shadow: 1px 2px 10px 0px darkslategrey;
-  margin: 5%;
+  text-align: center;
+  border-radius: 5em;
+  background-color: lavender;
+  margin: 1%;
 }
 
 img {
@@ -51,28 +56,40 @@ img {
   width: 10%;
 }
 
+.whatItem {
+  background-image: url('/what.png');
+  background-repeat: no-repeat;
+  background-color: #f5fffa66;
+  border-radius: 3em;
+  width: auto;
+  padding: .5em;
+  font-size: large;
+  background-size: contain;
+  text-indent: 3em;
+}
+
 .whoItem {
   background-image: url('/who.png');
   background-repeat: no-repeat;
-  background-color: lavender;
+  background-color: #f5fffa66;
   border-radius: 3em;
   width: auto;
-  padding: 1em;
+  padding: .5em;
   font-size: large;
   background-size: contain;
   text-indent: 3em;
 }
 
 .whenItem {
-  background-image: url(/when.png);
-  background-size: 2em;
+  background-image: url('/when.png');
+  background-size: 1.5em;
   background-position-x: 0.5em;
-  background-position-y: .5em;
   background-repeat: no-repeat;
-  background-color: lavender;
+  background-position-y: .3em;
+  background-color: #f5fffa66;
   border-radius: 3em;
   width: auto;
-  padding: 1em;
+  padding: .5em;
   font-size: large;
   text-indent: 3em;
 }
@@ -82,13 +99,16 @@ img {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 2em;
-  height: 4em;
-  width: 4em;
-  border-radius: 10em;
+  height: 2.5em;
+  width: 48%;
   border: none;
-  font-size: small;
-  background-color: mintcream;
-  -webkit-box-shadow: 1px 2px 10px 0px darkslategrey;
-  box-shadow: 1px 2px 10px 0px darkslategrey;
-  margin: 5%;
+  text-align: center;
+  border-radius: 5em;
+  background-color: lavender;
+  margin: 1%;
+}
+
+.itemName {
+  margin: 0;
+  transition-duration: 500ms;
 }

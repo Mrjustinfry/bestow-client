@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-
 import Card from './card';
+import Filter from './filter';
 
 import {addItem} from '../actions/actions';
 
@@ -12,6 +12,7 @@ class Item extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      searchItem: '',
       isHidden: false
     }
 
@@ -28,31 +29,28 @@ class Item extends Component {
   render() {
         if(this.props.filter === "what") {
           const items = this.props.items.map((item, index) => (
-            <div>
-            <li className={item.how} key={item.cardId} onClick={this.toggleHidden}>
-            {!this.state.isHidden && <p>{item.what}</p> || this.state.isHidden && <p className="close">close</p>}
-            </li>
-            {this.state.isHidden && <Card {...item} />}
+            <div className={item.how} key={item.cardId}>
+              {!this.state.isHidden && <p onClick={this.toggleHidden} className="itemName">{item.what}</p>
+               || this.state.isHidden && <p className="close" onClick={this.toggleHidden}>close</p>}
+              {this.state.isHidden && <Card {...item} />}
             </div>
         ))
           return [items];
       } else if (this.props.filter === "who"){
           const items = this.props.items.map((item, index) => (
-            <div>
-            <li className={item.how} key={item.cardId} onClick={this.toggleHidden}>
-            {!this.state.isHidden && <p>{item.who}</p> || this.state.isHidden && <p className="close">close</p>}
-            </li>
-            {this.state.isHidden && <Card {...item} />}
+            <div className={item.how} key={item.cardId}>
+              {!this.state.isHidden && <p onClick={this.toggleHidden} className="itemName">{item.who}</p>
+               || this.state.isHidden && <p className="close" onClick={this.toggleHidden}>close</p>}
+              {this.state.isHidden && <Card {...item} />}
             </div>
           ))
           return [items];
       } else if (this.props.filter === "when"){
           const items = this.props.items.map((item, index) => (
-            <div>
-            <li className={item.how} key={item.cardId} onClick={this.toggleHidden}>
-            {!this.state.isHidden && <p>{item.when}</p> || this.state.isHidden && <p className="close">close</p>}
-            </li>
-            {this.state.isHidden && <Card {...item} />}
+            <div className={item.how} key={item.cardId}>
+              {!this.state.isHidden && <p onClick={this.toggleHidden} className="itemName">{item.when}</p>
+               || this.state.isHidden && <p className="close" onClick={this.toggleHidden}>close</p>}
+              {this.state.isHidden && <Card {...item} />}
             </div>
           ))
           return [items];
@@ -66,6 +64,7 @@ Item.defaultProps = {
 }
 
 const mapStateToProps = state => ({
+    searchItem: state.searchItem,
     filter: state.filter,
     items: state.items
 });

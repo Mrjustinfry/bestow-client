@@ -25,6 +25,7 @@
    transition-timing-function: ease-in-out;
    transform: rotate(180deg);
    transition-duration: 500ms;
+   cursor: pointer;
 }
 
 .close {
@@ -63,21 +64,21 @@
   font-family: 'Quicksand', sans-serif;
   font-weight: bold;
   font-size: medium;
-  background-color: #c567e6;
+  background-color: #f66cfb;
 }
 
 .borrowBtn {
-  background-color: #696ff9;
+  background-color: #a262fb;
 }
 
 .borrowBtn:hover {
   cursor: pointer;
-  background-color: #a8baf6;
+  background-color: #d0b9fa;
   transition-duration: 300ms;
 }
 
 .bestowBtn:hover {
   cursor: pointer;
-  background-color: #d39df7;
+  background-color: #f8d3fb;
   transition-duration: 300ms;
 }

@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
+import {connect} from 'react-redux';
 
 import Item from './item';
 
 import './list.css';
 
-export default function List(props) {
+export function List(props) {
     return (
       <div className="listContainer">
           <ul className="items">
-              <Item
-              item={props.items}
-              />
+              <Item item={props.searchItem} />
           </ul>
       </div>
     )
 }
+
+export default connect()(List);

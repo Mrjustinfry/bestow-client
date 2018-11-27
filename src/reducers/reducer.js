@@ -10,6 +10,7 @@ import {SET_FILTER,
 const initialState = {
   users: [
     {
+      userId: 1,
       firstName: 'Justin',
       lastName: 'Fry',
       username: 'Mrjustinfry'
@@ -52,7 +53,7 @@ const initialState = {
 };
 
 
-export const reducer = (state=initialState, action) => {
+export const itemReducer = (state=initialState, action) => {
   const {type} = action;
   switch(type){
     case ADD_ITEM:
@@ -82,9 +83,11 @@ export const reducer = (state=initialState, action) => {
       return state;
     })
     case DELETE_ITEM:
-      return Object.assign({}, state, {
-
-      });
+    const items = state.items.filter(item => item.cardId !== action.item);
+    console.log(items);
+        return Object.assign({}, state, {
+          items: [...items]
+        });
     case ADD_USER:
     return Object.assign({}, state, {
     users: [...state.users, {
@@ -95,9 +98,10 @@ export const reducer = (state=initialState, action) => {
     }]
   });
     case DELETE_USER:
-      return Object.assign({}, state, {
-
-      });
+    const users = state.users.filter(user => user.userId !== action.user);
+        return Object.assign({}, state, {
+          users: [...users]
+        });
     case LOGIN_USER:
       return Object.assign({}, state, {
 

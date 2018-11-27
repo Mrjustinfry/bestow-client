@@ -1,0 +1,43 @@
+.signupForm {
+  background-color: mintcream;
+  padding: 1em;
+  border: 2px solid #92d9fa;
+  border-radius: 1em;
+  font-family: 'Nunito', sans-serif;
+  color: purple;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+}
+
+.suContainer {
+  background-color: #92d9fa;
+}
+
+.sfIn {
+  border-radius: 1em;
+  border: none;
+  padding: 1%;
+  background-color: #f3e3f9;
+  color: purple;
+  font-size: medium;
+  width: 100%;
+  margin: 1% auto;
+  text-align: center;
+}
+
+.suHead {
+  border-bottom: 2px solid #92d9fa;
+  padding: .3em;
+}
+
+.signupBtn {
+  border-radius: 1em;
+  padding: 1%;
+  font-size: large;
+  background-color: #d571d7;
+  width: 10em;
+  margin: 1% auto;
+  color: black;
+  border: 1px solid #92d9fa;
+}

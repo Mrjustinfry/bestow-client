@@ -6,3 +6,14 @@
   font-family: 'Nunito', sans-serif;
   color: purple;
 }
+
+a {
+  text-decoration: none;
+  font-weight: bolder;
+}
+
+.learn:hover {
+  font-size: large;
+  cursor: pointer;
+  transition-duration: 500ms;
+}

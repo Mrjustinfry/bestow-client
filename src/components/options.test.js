@@ -1,11 +1,10 @@
 import React from 'react';
 import {shallow} from 'enzyme'; //don't forget to add "mount" for fullDOM
 
-import store from '../store';
-import Bestow from './bestow';
+import Options from './options';
 
-describe('<Bestow />', () => {
+describe('<LoginForm />', () => {
     it('Renders without crashing', () => {
-        shallow(<Bestow store={store} />);
+        shallow(<Options />);
     });
   });

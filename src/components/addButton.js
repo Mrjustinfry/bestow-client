@@ -43,25 +43,48 @@ onSubmit(e) {
     if (!this.state.editing) {
       return (
           <div className="addButton">
-          <footer className="addFoot"><button className="addBtn" onClick={() => this.setEditing(true)}>+</button></footer>
+            <footer className="addFoot">
+              <button className="addBtn" onClick={() => this.setEditing(true)}>+</button>
+            </footer>
           </div>
       );
   }
   return (
         <form className="itemForm">
           <p className="close" onClick={() => this.setEditing(false)}>close</p>
-          <label><input type="text" className="whoIn itemIn" ref={input => this.whoInput = input} /></label>
+          <label>
+            <input
+              type="text"
+              className="whoIn itemIn"
+              max='10'
+              ref={input => this.whoInput = input}
+              required /></label>
           <br />
-          <label><input type="text" className="whatIn itemIn" ref={input => this.whatInput = input} /></label>
+          <label>
+            <input
+              type="text"
+              className="whatIn itemIn"
+              max='120'
+              ref={input => this.whatInput = input}
+              required /></label>
           <br />
-          <label><input type="date" className="whenIn itemIn" ref={input => this.whenInput = input} /></label>
+          <label>
+            <input
+              type="date"
+              className="whenIn itemIn"
+              ref={input => this.whenInput = input}
+              required /></label>
           <br />
-          <button
-          onClick={this.onSubmit}
-          className="borrowBtn" id="borrowed" type="button">Borrowed</button>
-          <button
-          onClick={this.onSubmit}
-          className="bestowBtn" id="bestowed" type="button">Bestowed</button>
+            <button
+              onClick={this.onSubmit}
+              className="borrowBtn"
+              id="borrowed"
+              type="button">Borrowed</button>
+            <button
+              onClick={this.onSubmit}
+              className="bestowBtn"
+              id="bestowed"
+              type="button">Bestowed</button>
         </form>
     );
   }

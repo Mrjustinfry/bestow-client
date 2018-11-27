@@ -7,9 +7,11 @@
   background-color: mintcream;
   border-radius: 2em;
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: row wrap;
   padding: 1em;
   margin: auto;
+  font-size: larger;
+  word-spacing: .1em;
 }
 
 .infoHeadBox {
@@ -48,21 +50,54 @@
 }
 
 h3 {
-    font-family: 'Nunito', sans-serif;
-    text-align: center;
+  font-family: 'Nunito', sans-serif;
+  text-align: center;
+  border: 1px solid #d571d7;
+  border-radius: 3em;
+  background-color: lavender;
+  padding: .2em;
 }
 
 p {
-      font-family: 'Quicksand', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.questionWhat {
+  background-color: #92d9fa;
+}
+
+.questionSignup {
+  border: 1px solid #92d9fa;
 }
 
 .infoFoot {
-      font-family: 'Nunito', sans-serif;
-      text-align: center;
-      color: grey;
-      width: 100%;
+  font-family: 'Nunito', sans-serif;
+  text-align: center;
+  color: black;
+  width: 100%;
+  margin-top: 1%;
+}
+
+.infoIcon {
+  height: 1.3em;
+  width: 1.3em;
+}
+
+.bIcon {
+  height: 1.5em;
+  width: auto;
 }
 
 .me {
+  font-weight: bold;
+}
+
+.blue {
+  color: #6409e7;
+  font-weight: bold;
+}
+
+.purple {
+  color: #930399;
   font-weight: bold;
 }

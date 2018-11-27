@@ -33,25 +33,50 @@ class SignupForm extends Component {
 
   render() {
       return (
-          <div className="signupForm">
-            <form onSubmit={this.onSubmit}>
-              <h4>Sign up now!</h4>
-              <label>First name
-              <input type="text" ref={input => this.firstName = input} /></label>
+          <div className="signupForm suContainer">
+            <form
+                className="signupForm"
+                onSubmit={this.onSubmit}>
+              <h4 className="suHead">Sign up now!</h4>
+              <label className="suLabel">First name<br />
+                <input
+                    className="firstIn sfIn"
+                    type="text"
+                    htmlFor="firstName"
+                    ref={input => this.firstName = input} /></label>
               <br />
-              <label>Last name
-              <input type="text" ref={input => this.lastName = input} /></label>
+              <label className="suLabel">Last name<br />
+                <input
+                    className="lastIn sfIn"
+                    type="text"
+                    htmlFor="lastName"
+                    ref={input => this.lastName = input} /></label>
               <br />
-              <label>Username
-              <input type="text" ref={input => this.username = input} /></label>
+              <label className="suLabel">Username<br />
+                <input
+                    className="userIn sfIn"
+                    type="text"
+                    htmlFor="username"
+                    ref={input => this.username = input} /></label>
               <br />
-              <label>Password
-              <input type="password" ref={input => this.password = input} /></label>
+              <label className="suLabel">Password<br />
+                <input
+                    className="passIn sfIn"
+                    type="password"
+                    htmlFor="password"
+                    ref={input => this.password = input} /></label>
               <br />
-              <label>Re-enter Password
-              <input type="password" /></label>
+              <label className="suLabel">Verify Password<br />
+                <input
+                    className="passAgainIn sfIn"
+                    type="password"
+                    htmlFor="passwordAgain" /></label>
               <br />
-              <button>Submit</button>
+              <button
+                    className="signupBtn"
+                    type="submit">
+                    Sign Up
+                </button>
             </form>
           </div>
       );

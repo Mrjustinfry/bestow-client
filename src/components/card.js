@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
-import {editItem} from '../actions/actions';
+import {editItem, deleteItem} from '../actions/actions';
 
 import './card.css';
 
@@ -43,39 +43,61 @@ onSubmit(e) {
   this.setEditing(!this.state.editing);
 }
 
+deleteItem() {
+  this.props.deleteItem(this.props.cardId);
+}
+
   render() {
-    console.log(this.props);
     if(!this.state.editing) {
       return (
-        <div className="itemCard" className={this.props.how} id={this.props.cardId} >
-          <h1>{this.props.what}</h1>
+        <div className="itemCard" className="card" id={this.props.cardId} >
+          <span className="btns">
+            <button
+              className="editBtn"
+              onClick={() => this.setEditing(!this.state.editing)}></button>
+            <button
+              className="trashBtn"
+              onClick ={() => this.deleteItem(this.props.cardId)} ></button>
+          </span>
+          <p className="whatItem">{this.props.what}</p>
           <p className="whoItem">{this.props.who}</p>
           <p className="whenItem">{this.props.when}</p>
-          <div className="btns">
-          <button className="editBtn" onClick={() => this.setEditing(!this.state.editing)}></button>
-          <button className="trashBtn"></button>
-          </div>
         </div>
       );
   }
   return (
     <form className="editItemForm">
-      <p className="close" onClick={() => this.setEditing(!this.state.editing)}>close</p>
-      <label><input type="text" className="whoIn" placeholder={this.props.who}
-      ref={input => this.whoInput = input} /></label>
+      <label>
+        <input
+          type="text"
+          className="whoIn"
+          placeholder={this.props.who}
+          ref={input => this.whoInput = input} /></label>
       <br />
-      <label><input type="text" className="whatIn" placeholder={this.props.what}
-      ref={input => this.whatInput = input} /></label>
+      <label>
+        <input
+          type="text"
+          className="whatIn"
+          placeholder={this.props.what}
+          ref={input => this.whatInput = input} /></label>
       <br />
-      <label><input type="date" className="whenIn" placeholder={this.props.when}
-      ref={input => this.whenInput = input} /></label>
+      <label>
+        <input
+          type="date"
+          className="whenIn"
+          placeholder={this.props.when}
+          ref={input => this.whenInput = input} /></label>
       <br />
-      <button
-      onClick={this.onSubmit}
-      className="borrowBtn" id="borrowed" type="button">Borrowed</button>
-      <button
-      onClick={this.onSubmit}
-      className="bestowBtn" id="bestowed" type="button">Bestowed</button>
+        <button
+          onClick={this.onSubmit}
+          className="borrowBtn"
+          id="borrowed"
+          type="button">Borrowed</button>
+        <button
+          onClick={this.onSubmit}
+          className="bestowBtn"
+          id="bestowed"
+          type="button">Bestowed</button>
     </form>
   );
 }
@@ -85,4 +107,4 @@ const mapStateToProps = state => ({
     items: state.items
 });
 
-export default connect(mapStateToProps, {editItem}, store)(Card);
+export default connect(mapStateToProps, {editItem, deleteItem})(Card);

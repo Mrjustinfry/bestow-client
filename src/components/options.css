@@ -1,0 +1,29 @@
+.optionsBox {
+  float: right;
+  padding: 1.5em;
+  list-style: none;
+}
+
+.logoutBtn, .deleteUserBtn, .infoBtn {
+  width: 8em;
+  padding: 5%;
+  border: 1px solid black;
+  margin: 3%;
+  border-radius: 1em;
+  font-weight: bold;
+  color: black;
+  background-color: #f66cfb;
+  text-decoration: none;
+}
+
+.logoutBtn:hover, .infoBtn:hover {
+  cursor: pointer;
+  background-color: #f9b0fc;
+}
+
+.deleteUserBtn:hover {
+  cursor: pointer;
+  background-color: #4605a5;
+  color: white;
+  border: 1px solid white;
+}

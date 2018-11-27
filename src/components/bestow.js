@@ -4,24 +4,23 @@ import {connect} from 'react-redux';
 import Header from './header';
 import AddButton from './addButton';
 import List from './list';
-
-import './bestow.css';
+import Filter from './filter';
 
 class Bestow extends Component {
   render() {
       return (
           <div className="bestow">
-          <Header />
-          <List />
-          <AddButton />
+            <Header />
+            <List listItems={Filter.listItems} />
+            <AddButton />
           </div>
       );
   }
 }
 
 const mapStateToProps = state => ({
-  filter: state.filter,
+    filter: state.filter,
     items: state.items
 });
 
-export default connect(mapStateToProps, store)(Bestow);
+export default connect(mapStateToProps)(Bestow);

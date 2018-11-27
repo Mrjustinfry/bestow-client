@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 
 import LoginForm from './loginForm';
 import Footer from './footer';
-import Info from './info';
 
 import './App.css';
 

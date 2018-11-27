@@ -4,23 +4,25 @@ import {connect} from 'react-redux';
 import './loginForm.css';
 
 class LoginForm extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
       return (
           <div className="loginForm">
             <form>
-              <label>Username
+                <label>Username
               <br />
-              <input type="text" className="logInput" /></label>
+                <input
+                  type="text"
+                  className="logInput"
+                  htmlFor="username" /></label>
               <br />
-              <label>Password
+                <label>Password
               <br />
-              <input type="password" className="logInput" /></label>
+                <input
+                  type="password"
+                  className="logInput"
+                  htmlFor="password" /></label>
               <br />
-              <button className="logBtn">Sign In</button>
+                <button className="logBtn">Sign In</button>
             </form>
           </div>
       );
@@ -29,4 +31,4 @@ class LoginForm extends Component {
 
 
 
-export default connect(store)(LoginForm);
+export default connect()(LoginForm);

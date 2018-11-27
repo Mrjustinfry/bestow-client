@@ -24,3 +24,13 @@ h1 {
 .btns {
   text-align: center;
 }
+
+.btns:hover {
+  cursor: pointer;
+}
+
+.card {
+  border: 3px solid #f9b6fc;
+  border-radius: inherit;
+  padding: 1%;
+}
