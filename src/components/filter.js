@@ -34,10 +34,6 @@ toggleHidden () {
 }
 
   render() {
-    const listItems = this.props.items.filter(item =>
-      item.what.toLowerCase().includes(
-          this.state.searchItem.toLowerCase()
-    ));
       return (
         <div className="filters">
           <ul className="filterList">
@@ -90,3 +86,11 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, {setFilter})(Filter);
+
+
+/*
+const listItems = this.props.items.filter(item =>
+  item.what.toLowerCase().includes(
+      this.state.searchItem.toLowerCase()
+));
+*/

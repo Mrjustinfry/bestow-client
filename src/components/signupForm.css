@@ -41,3 +41,8 @@
   color: black;
   border: 1px solid #92d9fa;
 }
+
+.signupBtn:hover {
+  cursor: pointer;
+  background-color: #f49ef8;
+}

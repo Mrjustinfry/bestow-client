@@ -51,6 +51,14 @@
   margin: 1%;
 }
 
+.editBtn:hover {
+  cursor: pointer;
+  background-color: #d39df7;
+  -webkit-transition-duration: 300ms;
+  -o-transition-duration: 300ms;
+  transition-duration: 300ms;
+}
+
 img {
   height: 10%;
   width: 10%;
@@ -108,7 +116,21 @@ img {
   margin: 1%;
 }
 
+.trashBtn:hover {
+  cursor: pointer;
+  background-color: #d39df7;
+  -webkit-transition-duration: 300ms;
+  -o-transition-duration: 300ms;
+  transition-duration: 300ms;
+}
+
 .itemName {
   margin: 0;
+  height: 100%;
+  width: 100%;
   transition-duration: 500ms;
+}
+
+.itemName:hover {
+  cursor: pointer;
 }

@@ -1,20 +1,3 @@
-.itemCard {
-  list-style: none;
-  padding: 1em;
-  margin: 1em;
-  background-color: #f114f863;
-  -webkit-box-shadow: 3px 3px 16px 0px lightslategrey;
-  box-shadow: 3px 3px 16px 0px lightslategrey;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: bold;
-  font-size: large;
-  background-color: #ffffff;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#f114f863), to(mintcream));
-  background-image: -webkit-linear-gradient(#f114f863, mintcream);
-  background-image: -o-linear-gradient(#f114f863, mintcream);
-  background-image: linear-gradient(#f114f863, mintcream);
-}
-
 h1 {
   border-bottom: 3px solid #92d9fa;
   text-align: center;
@@ -33,4 +16,24 @@ h1 {
   border: 3px solid #f9b6fc;
   border-radius: inherit;
   padding: 1%;
+}
+
+.editIn {
+  border-radius: 3em;
+  padding: .5em;
+  font-size: large;
+  background-size: contain;
+  text-indent: 3em;
+  margin: .5em auto;
+  border: none;
+  width: 95%;
+  background-color: mintcream;
+}
+
+.editWhenIn {
+  background-image: url(/when.png);
+  background-size: 1.5em;
+  background-position-x: 0.5em;
+  background-repeat: no-repeat;
+  background-position-y: .3em;
 }

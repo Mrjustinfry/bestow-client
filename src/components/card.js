@@ -50,7 +50,7 @@ deleteItem() {
   render() {
     if(!this.state.editing) {
       return (
-        <div className="itemCard" className="card" id={this.props.cardId} >
+        <div className="itemCard card" id={this.props.cardId} >
           <span className="btns">
             <button
               className="editBtn"
@@ -70,21 +70,21 @@ deleteItem() {
       <label>
         <input
           type="text"
-          className="whoIn"
+          className="whoIn editIn"
           placeholder={this.props.who}
           ref={input => this.whoInput = input} /></label>
       <br />
       <label>
         <input
           type="text"
-          className="whatIn"
+          className="whatIn editIn"
           placeholder={this.props.what}
           ref={input => this.whatInput = input} /></label>
       <br />
       <label>
         <input
           type="date"
-          className="whenIn"
+          className="whenIn editIn editWhenIn"
           placeholder={this.props.when}
           ref={input => this.whenInput = input} /></label>
       <br />
@@ -92,11 +92,13 @@ deleteItem() {
           onClick={this.onSubmit}
           className="borrowBtn"
           id="borrowed"
+          value="borrowed"
           type="button">Borrowed</button>
         <button
           onClick={this.onSubmit}
           className="bestowBtn"
           id="bestowed"
+          value="bestowed"
           type="button">Bestowed</button>
     </form>
   );
@@ -104,6 +106,7 @@ deleteItem() {
 }
 
 const mapStateToProps = state => ({
+    searchItem: state.searchItem,
     items: state.items
 });
 

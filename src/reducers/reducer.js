@@ -5,7 +5,8 @@ import {SET_FILTER,
         ADD_USER,
         DELETE_USER,
         LOGIN_USER,
-        GET_ITEMS} from '../actions/actions';
+        GET_ITEMS,
+        } from '../actions/actions';
 
 const initialState = {
   users: [
@@ -59,6 +60,8 @@ export const itemReducer = (state=initialState, action) => {
     case ADD_ITEM:
         return Object.assign({}, state, {
         items: [...state.items, {
+            cardId: 9,
+            isHidden: true,
             who: action.items.who,
             what: action.items.what,
             when: action.items.when,
@@ -68,10 +71,9 @@ export const itemReducer = (state=initialState, action) => {
     case GET_ITEMS:
       return state;
     case EDIT_ITEM:
-    return state.map(cardId => {
-      if(cardId === action.item.cardId) {
+      const itemsEdit = state.items.filter(item => item.cardId === action.item);
         return Object.assign({}, state, {
-          items: [...state.items, {
+          items: [...itemsEdit, {
               cardId: action.item.cardId,
               who: action.item.who,
               what: action.item.what,
@@ -79,26 +81,22 @@ export const itemReducer = (state=initialState, action) => {
               how: action.item.how
           }]
         });
-      }
-      return state;
-    })
     case DELETE_ITEM:
-    const items = state.items.filter(item => item.cardId !== action.item);
-    console.log(items);
-        return Object.assign({}, state, {
-          items: [...items]
+      const items = state.items.filter(item => item.cardId !== action.item);
+          return Object.assign({}, state, {
+            items: [...items]
         });
     case ADD_USER:
-    return Object.assign({}, state, {
-    users: [...state.users, {
-        firstName: action.user.firstName,
-        lastName: action.user.lastName,
-        username: action.user.username,
-        password: action.user.password
+      return Object.assign({}, state, {
+        users: [...state.users, {
+            firstName: action.user.firstName,
+            lastName: action.user.lastName,
+            username: action.user.username,
+            password: action.user.password
     }]
   });
     case DELETE_USER:
-    const users = state.users.filter(user => user.userId !== action.user);
+      const users = state.users.filter(user => user.userId !== action.user);
         return Object.assign({}, state, {
           users: [...users]
         });

@@ -9,7 +9,7 @@ export function List(props) {
     return (
       <div className="listContainer">
           <ul className="items">
-              <Item item={props.searchItem} />
+              <Item />
           </ul>
       </div>
     )

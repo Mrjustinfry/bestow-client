@@ -9,3 +9,28 @@
   flex-flow: column;
   margin-top: 5em;
 }
+
+
+::-webkit-input-placeholder {
+  color: purple;
+}
+
+:-moz-placeholder {
+  color: pruple;
+}
+
+::-moz-placeholder {
+  color: purple;
+}
+
+:-ms-input-placeholder {
+  color: purple;
+}
+
+::-ms-input-placeholder {
+  color: purple;
+}
+
+:placeholder-shown {
+  color: purple;
+}

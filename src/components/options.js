@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 import './options.css';
 
-export default function Info() {
+export default function Options() {
     return (
       <ul className="optionsBox">
         <li className="logoutBtn">log out</li>

@@ -20,21 +20,21 @@
 
 
 .whoIn {
-    background-image: url(/who.png);
+    background-image: url('/who.png');
     background-position: 1px 1px;
     background-repeat: no-repeat;
     background-size: 10%;
 }
 
 .whatIn {
-    background-image: url(/what.png);
+    background-image: url('/what.png');
     background-position: 3px 1px;
     background-repeat: no-repeat;
     background-size: 9%;
 }
 
 .whenIn {
-    background-image: url(/when.png);
+    background-image: url('/when.png');
     background-position: 5px 5px;
     background-repeat: no-repeat;
     background-size: 7%;
