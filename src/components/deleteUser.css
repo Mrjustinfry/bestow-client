@@ -1,0 +1,40 @@
+.deleteBox {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  text-align: center;
+  border: 5px solid #f29bf5;
+  border-radius: 2em;
+  background-color: mintcream;
+  margin: 10em auto;
+}
+
+.youSure {
+  font-family: 'Nunito', sans-serif;
+}
+
+.permanent {
+  font-family: 'Nunito', sans-serif;
+}
+
+.yes, .no {
+  border-radius: 1em;
+  padding: 1%;
+  font-size: large;
+  background-color: #d571d7;
+  width: 80%;
+  margin: 2% auto;
+  color: black;
+  border: 1px solid #92d9fa;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.yes:hover, .no:hover {
+  cursor: pointer;
+  background-color: #f49ef8;
+  font-weight: bolder;
+  transition: background-color 500ms ease-in-out;
+}

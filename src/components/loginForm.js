@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
+
+import Input from './input';
+import {required, valid} from '../validator';
 
 import './loginForm.css';
 
@@ -7,28 +10,38 @@ class LoginForm extends Component {
   render() {
       return (
           <div className="loginForm">
-            <form>
-                <label>Username
+            <form
+              onSubmit={this.onSubmit}>
+            <Field
+                name="username"
+                type="text"
+                component={Input}
+                display="logInput"
+                label="Username"
+                validate={[required, valid]}
+            />
+            <br />
+            <Field
+                name="password"
+                type="password"
+                component={Input}
+                display="logInput"
+                label="Password"
+                validate={[required, valid]}
+            />
               <br />
-                <input
-                  type="text"
-                  className="logInput"
-                  htmlFor="username" /></label>
-              <br />
-                <label>Password
-              <br />
-                <input
-                  type="password"
-                  className="logInput"
-                  htmlFor="password" /></label>
-              <br />
-                <button className="logBtn">Sign In</button>
+                <button
+                  className="logBtn"
+                  disabled={this.props.pristine || this.props.submitting}>
+                  Sign In</button>
             </form>
           </div>
       );
   }
 }
 
-
-
-export default connect()(LoginForm);
+export default reduxForm({
+    form: 'login',
+    onSubmitFail: (errors, dispatch) =>
+        dispatch(focus('login', Object.keys(errors)[0]))
+})(LoginForm);

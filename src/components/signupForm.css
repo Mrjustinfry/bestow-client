@@ -18,12 +18,13 @@
   border-radius: 1em;
   border: none;
   padding: 1%;
-  background-color: #f3e3f9;
+  background-color: #92d9fa59;
   color: purple;
   font-size: medium;
   width: 100%;
   margin: 1% auto;
   text-align: center;
+  border-bottom: 1px solid #92d9fa;
 }
 
 .suHead {

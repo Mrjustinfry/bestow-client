@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
+import Input from './input';
+import {required, valid} from '../validator';
 
 import {addUser} from '../actions/actions';
 
@@ -38,43 +40,55 @@ class SignupForm extends Component {
                 className="signupForm"
                 onSubmit={this.onSubmit}>
               <h4 className="suHead">Sign up now!</h4>
-              <label className="suLabel">First name<br />
-                <input
-                    className="firstIn sfIn"
-                    type="text"
-                    htmlFor="firstName"
-                    ref={input => this.firstName = input} /></label>
+              <Field
+                  name="firstName"
+                  type="text"
+                  component={Input}
+                  label="First Name"
+                  display="firstIn sfIn"
+                  validate={[required, valid]}
+              />
               <br />
-              <label className="suLabel">Last name<br />
-                <input
-                    className="lastIn sfIn"
-                    type="text"
-                    htmlFor="lastName"
-                    ref={input => this.lastName = input} /></label>
+              <Field
+                  name="lastName"
+                  type="text"
+                  component={Input}
+                  label="Last Name"
+                  display="LastIn sfIn"
+                  validate={[required, valid]}
+              />
               <br />
-              <label className="suLabel">Username<br />
-                <input
-                    className="userIn sfIn"
-                    type="text"
-                    htmlFor="username"
-                    ref={input => this.username = input} /></label>
+              <Field
+                  name="username"
+                  type="text"
+                  component={Input}
+                  label="Username"
+                  display="userIn sfIn"
+                  validate={[required, valid]}
+              />
               <br />
-              <label className="suLabel">Password<br />
-                <input
-                    className="passIn sfIn"
-                    type="password"
-                    htmlFor="password"
-                    ref={input => this.password = input} /></label>
+              <Field
+                  name="password"
+                  type="password"
+                  component={Input}
+                  label="Password"
+                  display="passIn sfIn"
+                  validate={[required, valid]}
+              />
               <br />
-              <label className="suLabel">Verify Password<br />
-                <input
-                    className="passAgainIn sfIn"
-                    type="password"
-                    htmlFor="passwordAgain" /></label>
+              <Field
+                  name="passwordAgain"
+                  type="password"
+                  component={Input}
+                  label="Verify Password"
+                  display="passAgainIn sfIn"
+                  validate={[required, valid]}
+              />
               <br />
               <button
                     className="signupBtn"
-                    type="submit">
+                    type="submit"
+                    disabled={this.props.pristine || this.props.submitting}>
                     Sign Up
                 </button>
             </form>
@@ -92,4 +106,8 @@ const mapStateToProps = state => ({
   }
 })
 
-export default connect(mapStateToProps, {addUser})(SignupForm);
+export default reduxForm({
+    form: 'signup',
+    onSubmitFail: (errors, dispatch) =>
+        dispatch(focus('signup', Object.keys(errors)[0]))
+})(SignupForm);

@@ -60,8 +60,8 @@ export const itemReducer = (state=initialState, action) => {
     case ADD_ITEM:
         return Object.assign({}, state, {
         items: [...state.items, {
-            cardId: 9,
-            isHidden: true,
+            cardId: action.items.cardId,
+            isHidden: action.items.isHidden,
             who: action.items.who,
             what: action.items.what,
             when: action.items.when,
@@ -69,9 +69,9 @@ export const itemReducer = (state=initialState, action) => {
         }]
       });
     case GET_ITEMS:
-      return state;
+      return [...state];
     case EDIT_ITEM:
-      const itemsEdit = state.items.filter(item => item.cardId === action.item);
+      const itemsEdit = state.items.filter(item => item.cardId !== action.item.cardId);
         return Object.assign({}, state, {
           items: [...itemsEdit, {
               cardId: action.item.cardId,

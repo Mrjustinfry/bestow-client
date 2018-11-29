@@ -14,7 +14,6 @@
     position: fixed;
     bottom: 10%;
     right: 2%;
-    height: 15em;
     width: 20em;
     transition-duration: 500ms;
 }

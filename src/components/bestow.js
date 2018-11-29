@@ -11,7 +11,7 @@ class Bestow extends Component {
       return (
           <div className="bestow">
             <Header />
-            <List listItems={Filter.listItems} />
+            <List  />
             <AddButton />
           </div>
       );

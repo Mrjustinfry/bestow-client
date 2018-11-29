@@ -11,10 +11,11 @@ class Item extends Component {
     super(props);
     this.state = {
       searchItem: '',
-      hideItem: props.items.map(item => ({
-        cardId: item.cardId,
-        hide: true
-      }))
+      hideItem: this.props.items.map(item =>
+        ({
+          cardId: item.cardId,
+          hide: true
+        }))
     }
     this.toggleHidden = this.toggleHidden.bind(this);
   }
@@ -30,6 +31,12 @@ class Item extends Component {
   }
 
   isHidden = (cardId) => this.state.hideItem.find(item => item.cardId === cardId).hide
+
+  componentDidUpdate(prevProps, filter) {
+      if (!prevProps.filter && this.props.filter) {
+          filter: this.props.filter;
+      }
+  }
 
   render() {
     return this.props.items.map((item, index) => (
@@ -50,8 +57,8 @@ Item.defaultProps = {
 
 const mapStateToProps = state => ({
     searchItem: state.searchItem,
-    filter: state.filter,
-    items: state.items
+    items: state.bestow.items,
+    filter: state.bestow.filter
 });
 
 export default connect(mapStateToProps, {addItem})(Item);

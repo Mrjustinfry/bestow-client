@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {addItem, getItems} from '../actions/actions';
 
+import AddItemForm from './addItemForm';
 
 import './addButton.css';
 import './addItem.css';
@@ -28,6 +29,8 @@ onSubmit(e) {
     const when = this.whenInput.value.trim();
     const how = e.target.id;
     this.props.addItem({
+      cardId: 10,
+      isHidden: true,
       who: who,
       what: what,
       when: when,
@@ -50,49 +53,16 @@ onSubmit(e) {
       );
   }
   return (
-        <form className="itemForm">
-          <p className="close" onClick={() => this.setEditing(false)}>close</p>
-          <label>
-            <input
-              type="text"
-              className="whoIn itemIn"
-              max='10'
-              ref={input => this.whoInput = input}
-              required /></label>
-          <br />
-          <label>
-            <input
-              type="text"
-              className="whatIn itemIn"
-              max='120'
-              ref={input => this.whatInput = input}
-              required /></label>
-          <br />
-          <label>
-            <input
-              type="date"
-              className="whenIn itemIn"
-              ref={input => this.whenInput = input}
-              required /></label>
-          <br />
-            <button
-              onClick={this.onSubmit}
-              className="borrowBtn"
-              id="borrowed"
-              type="button">Borrowed</button>
-            <button
-              onClick={this.onSubmit}
-              className="bestowBtn"
-              id="bestowed"
-              type="button">Bestowed</button>
-        </form>
+        <AddItemForm
+          onClick={() => this.setEditing(false)}/>
     );
   }
 }
 
-
 const mapStateToProps = state => ({
   items: {
+    cardId: state.cardId,
+    isHidden: state.isHidden,
     who: state.who,
     what: state.what,
     when: state.when,

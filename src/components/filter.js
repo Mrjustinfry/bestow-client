@@ -60,7 +60,7 @@ toggleHidden () {
                 onClick={() => this.setFilter("when")} /></li>
           </ul>
             <form onSubmit={e => e.preventDefault()} className="search">
-                <label htmlFor="search">
+                <label htmlFor="search" aria-label="search">
                   <input
                     type="search"
                     id="search"
@@ -80,7 +80,7 @@ toggleHidden () {
 }
 
 const mapStateToProps = state => ({
-    items: state.items,
+    items: state.bestow.items,
     searchItem: state.searchItem,
     filter: state.filter
 });

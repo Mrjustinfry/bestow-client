@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 
 import {editItem, deleteItem} from '../actions/actions';
 
+import EditItemForm from './editItemForm';
+
 import './card.css';
 
 class Card extends Component {
@@ -66,41 +68,7 @@ deleteItem() {
       );
   }
   return (
-    <form className="editItemForm">
-      <label>
-        <input
-          type="text"
-          className="whoIn editIn"
-          placeholder={this.props.who}
-          ref={input => this.whoInput = input} /></label>
-      <br />
-      <label>
-        <input
-          type="text"
-          className="whatIn editIn"
-          placeholder={this.props.what}
-          ref={input => this.whatInput = input} /></label>
-      <br />
-      <label>
-        <input
-          type="date"
-          className="whenIn editIn editWhenIn"
-          placeholder={this.props.when}
-          ref={input => this.whenInput = input} /></label>
-      <br />
-        <button
-          onClick={this.onSubmit}
-          className="borrowBtn"
-          id="borrowed"
-          value="borrowed"
-          type="button">Borrowed</button>
-        <button
-          onClick={this.onSubmit}
-          className="bestowBtn"
-          id="bestowed"
-          value="bestowed"
-          type="button">Bestowed</button>
-    </form>
+        <EditItemForm />
   );
 }
 }

@@ -1,5 +1,4 @@
 h1 {
-  border-bottom: 3px solid #92d9fa;
   text-align: center;
 }
 
@@ -36,4 +35,10 @@ h1 {
   background-position-x: 0.5em;
   background-repeat: no-repeat;
   background-position-y: .3em;
+}
+
+.editItemForm {
+  border: 3px solid #f9b6fc;
+  border-radius: inherit;
+  padding: 1%;
 }
