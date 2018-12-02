@@ -1,18 +1,16 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 
 import {deleteUser} from '../actions/actions';
 
 import './deleteUser.css';
 
 export class DeleteUser extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   deleteUser() {
     this.props.deleteUser(this.props.userId);
+    this.props.history.push('/');
   }
 
   render() {
@@ -35,4 +33,4 @@ const mapStateToProps = state => ({
     users: state.users
 });
 
-export default connect(mapStateToProps, {deleteUser})(DeleteUser);
+export default withRouter(connect(mapStateToProps, {deleteUser})(DeleteUser));

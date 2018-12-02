@@ -6,6 +6,7 @@ import {SET_FILTER,
         DELETE_USER,
         LOGIN_USER,
         GET_ITEMS,
+        TOGGLE_HIDDEN
         } from '../actions/actions';
 
 const initialState = {
@@ -20,7 +21,7 @@ const initialState = {
   items: [
       {
         cardId: 1,
-        isHidden: false,
+        hide: true,
         who: 'karen',
         what: 'phone charger',
         when: '11-14-18',
@@ -28,7 +29,7 @@ const initialState = {
       },
       {
         cardId: 2,
-        isHidden: false,
+        hide: true,
         who: 'John',
         what: 'Harry Potter',
         when: '10-31-18',
@@ -36,7 +37,7 @@ const initialState = {
       },
       {
         cardId: 3,
-        isHidden: false,
+        hide: true,
         who: 'Jane',
         what: 'Bundt pan',
         when: '09-12-18',
@@ -44,7 +45,7 @@ const initialState = {
       },
       {
         cardId: 4,
-        isHidden: false,
+        hide: true,
         who: 'Phillip',
         what: 'Pulp Fiction',
         when: '03-03-18',
@@ -61,7 +62,7 @@ export const itemReducer = (state=initialState, action) => {
         return Object.assign({}, state, {
         items: [...state.items, {
             cardId: action.items.cardId,
-            isHidden: action.items.isHidden,
+            hide: action.items.hide,
             who: action.items.who,
             what: action.items.what,
             when: action.items.when,
@@ -71,16 +72,17 @@ export const itemReducer = (state=initialState, action) => {
     case GET_ITEMS:
       return [...state];
     case EDIT_ITEM:
-      const itemsEdit = state.items.filter(item => item.cardId !== action.item.cardId);
-        return Object.assign({}, state, {
-          items: [...itemsEdit, {
-              cardId: action.item.cardId,
-              who: action.item.who,
-              what: action.item.what,
-              when: action.item.when,
-              how: action.item.how
+      const editItems = state.items.filter(item => item.cardId !== action.item.cardId);
+      return Object.assign({}, state, {
+          items: [...editItems, {
+            cardId: action.item.cardId,
+            hide: action.item.hide,
+            who: action.item.who,
+            what: action.item.what,
+            when: action.item.when,
+            how: action.item.how
           }]
-        });
+      });
     case DELETE_ITEM:
       const items = state.items.filter(item => item.cardId !== action.item);
           return Object.assign({}, state, {
@@ -108,6 +110,20 @@ export const itemReducer = (state=initialState, action) => {
       return Object.assign({}, state, {
           filter: action.filter
         });
+    case TOGGLE_HIDDEN:
+      const indexItem = state.items.findIndex(item => item.cardId === action.cardId);
+      const itemToggle = state.items[indexItem];
+      const itemsUpdated = [
+        ...state.items.slice(0, indexItem),
+        {
+          ...itemToggle,
+          hide: !itemToggle.hide
+        },
+        ...state.items.slice(indexItem+1)
+      ]
+      return Object.assign({}, state, {
+          items: itemsUpdated,
+      })
       default:
         return state;
   }

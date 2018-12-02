@@ -6,6 +6,7 @@ import {editItem, deleteItem} from '../actions/actions';
 import EditItemForm from './editItemForm';
 
 import './card.css';
+import './list.css';
 
 class Card extends Component {
 constructor(props) {
@@ -15,7 +16,6 @@ constructor(props) {
       editing: false,
       isHidden: 'true'
   };
-  this.onSubmit = this.onSubmit.bind(this);
 }
 
 
@@ -25,24 +25,20 @@ constructor(props) {
       });
 }
 
-onSubmit(e) {
-  e.preventDefault();
-  const cardId = this.props.cardId;
-  const who = this.whoInput.value.trim();
-  const what = this.whatInput.value.trim();
-  const when = this.whenInput.value.trim();
-  const how = e.target.id;
-  this.props.editItem({
-    cardId: cardId,
-    who: who,
-    what: what,
-    when: when,
-    how: how
-  });
-  this.whoInput.value = '';
-  this.whatInput.value = '';
-  this.whenInput.value = '';
-  this.setEditing(!this.state.editing);
+ timeLapse() {
+    let date1 = new Date(this.props.when);
+    let date2 = new Date();
+    let timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    let diffDays = Math.floor(timeDiff / (1000 * 3600 * 24));
+    if(date2>=date1){
+      if(diffDays>1){
+        return 'about ' + diffDays + ' days ago';
+      } else if(diffDays=1){
+        return ' yesterday';
+      }
+    }else if (date2<date1){
+    return 'in the future';
+  }
 }
 
 deleteItem() {
@@ -63,12 +59,18 @@ deleteItem() {
           </span>
           <p className="whatItem">{this.props.what}</p>
           <p className="whoItem">{this.props.who}</p>
-          <p className="whenItem">{this.props.when}</p>
+          <p className="whenItem">{this.props.when}
+            <span className="howLong">  - ({this.props.how + ' ' + this.timeLapse()}) -</span>
+          </p>
         </div>
       );
   }
   return (
-        <EditItemForm />
+        <EditItemForm
+          displayWhat={this.props.what}
+          displayWho={this.props.who}
+          displayWhen={this.props.when}
+          theCardId={this.props.cardId} />
   );
 }
 }

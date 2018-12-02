@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
+import {reduxForm, Field, focus, change, untouch} from 'redux-form';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 import Input from './input';
 import {required, valid} from '../validator';
 
@@ -26,11 +28,20 @@ class SignupForm extends Component {
         username: username,
         password: password
       });
-      this.firstName.value = '';
-      this.lastName.value = '';
-      this.username.value = '';
-      this.password.value = '';
-
+      let resetInput = (formName, inputsObj) => {
+             Object.keys(inputsObj).forEach(inputKey => {
+                 this.props.dispatch(change(formName, inputKey, inputsObj[inputKey]));
+                 this.props.dispatch(untouch(formName, inputKey));
+             });
+       }
+       resetInput('signup', {
+       firstName: ' ',
+       lastName: ' ',
+       username: ' ',
+       password: ' ',
+       passwordAgain: ' '
+   });
+   this.props.history.push('/');
   }
 
   render() {
@@ -38,7 +49,7 @@ class SignupForm extends Component {
           <div className="signupForm suContainer">
             <form
                 className="signupForm"
-                onSubmit={this.onSubmit}>
+                onSubmit={this.onSubmit.bind(this)}>
               <h4 className="suHead">Sign up now!</h4>
               <Field
                   name="firstName"
@@ -47,6 +58,7 @@ class SignupForm extends Component {
                   label="First Name"
                   display="firstIn sfIn"
                   validate={[required, valid]}
+                  ref={input => (this.firstName = input)}
               />
               <br />
               <Field
@@ -56,6 +68,7 @@ class SignupForm extends Component {
                   label="Last Name"
                   display="LastIn sfIn"
                   validate={[required, valid]}
+                  ref={input => (this.lastName = input)}
               />
               <br />
               <Field
@@ -65,6 +78,7 @@ class SignupForm extends Component {
                   label="Username"
                   display="userIn sfIn"
                   validate={[required, valid]}
+                  ref={input => (this.username = input)}
               />
               <br />
               <Field
@@ -74,6 +88,7 @@ class SignupForm extends Component {
                   label="Password"
                   display="passIn sfIn"
                   validate={[required, valid]}
+                  ref={input => (this.password = input)}
               />
               <br />
               <Field
@@ -103,11 +118,13 @@ const mapStateToProps = state => ({
     lastName: state.lastName,
     username: state.username,
     password: state.password
-  }
+ }
 })
 
-export default reduxForm({
+const SignupFormConnected = connect(mapStateToProps, {addUser})(SignupForm)
+
+export default withRouter(reduxForm({
     form: 'signup',
     onSubmitFail: (errors, dispatch) =>
         dispatch(focus('signup', Object.keys(errors)[0]))
-})(SignupForm);
+})(SignupFormConnected));

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {addItem, getItems} from '../actions/actions';
 
 import AddItemForm from './addItemForm';
 
@@ -13,7 +12,6 @@ class AddButton extends Component {
     this.state = {
         editing: false
     }
-    this.onSubmit = this.onSubmit.bind(this);
 }
 
 setEditing(editing) {
@@ -22,25 +20,6 @@ setEditing(editing) {
     });
 }
 
-onSubmit(e) {
-    e.preventDefault();
-    const who = this.whoInput.value.trim();
-    const what = this.whatInput.value.trim();
-    const when = this.whenInput.value.trim();
-    const how = e.target.id;
-    this.props.addItem({
-      cardId: 10,
-      isHidden: true,
-      who: who,
-      what: what,
-      when: when,
-      how: how
-    });
-    this.whoInput.value = '';
-    this.whatInput.value = '';
-    this.whenInput.value = '';
-    this.setEditing(!this.state.editing);
-}
 
   render() {
     if (!this.state.editing) {
@@ -70,4 +49,4 @@ const mapStateToProps = state => ({
   }
 });
 
-export default connect(mapStateToProps, {addItem, getItems})(AddButton);
+export default connect(mapStateToProps)(AddButton);

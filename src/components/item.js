@@ -3,46 +3,28 @@ import {connect} from 'react-redux';
 
 import CardItem from './cardItem';
 
-import {addItem} from '../actions/actions';
+import {addItem, toggleHidden} from '../actions/actions';
 
+import './list.css';
+import './card.css'
 
 class Item extends Component {
   constructor(props) {
     super(props);
     this.state = {
       searchItem: '',
-      hideItem: this.props.items.map(item =>
-        ({
-          cardId: item.cardId,
-          hide: true
-        }))
     }
-    this.toggleHidden = this.toggleHidden.bind(this);
   }
 
-  toggleHidden (cardId) {
-    const hideItems = this.state.hideItem.map(item => ({
-      cardId: item.cardId,
-      hide: item.cardId !== cardId
-    }))
-    this.setState({
-      hideItem: hideItems
-    })
-  }
-
-  isHidden = (cardId) => this.state.hideItem.find(item => item.cardId === cardId).hide
-
-  componentDidUpdate(prevProps, filter) {
-      if (!prevProps.filter && this.props.filter) {
-          filter: this.props.filter;
-      }
+  toggleHidden = cardId => () => {
+    this.props.toggleHidden(cardId)
   }
 
   render() {
     return this.props.items.map((item, index) => (
       <CardItem
-        toggleHidden={this.toggleHidden}
-        isHidden={this.isHidden(item.cardId)}
+        toggleHidden={this.toggleHidden(item.cardId)}
+        isHidden={item.hide}
         key={index}
         item={item}
         itemClassName={item.how}
@@ -61,4 +43,4 @@ const mapStateToProps = state => ({
     filter: state.bestow.filter
 });
 
-export default connect(mapStateToProps, {addItem})(Item);
+export default connect(mapStateToProps, {addItem, toggleHidden})(Item);

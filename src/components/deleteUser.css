@@ -38,3 +38,9 @@
   font-weight: bolder;
   transition: background-color 500ms ease-in-out;
 }
+
+@media only screen and (max-width: 780px) {
+  .deleteBox {
+    font-size: small;
+  }
+}

@@ -134,3 +134,23 @@ img {
 .itemName:hover {
   cursor: pointer;
 }
+
+.howLong {
+  font-size: medium;
+  font-weight: normal;
+}
+
+@media only screen and (max-width: 780px) {
+  .whatItem, .whoItem, .whenItem, .listContainer, .items, .itemName {
+    font-size: small;
+  }
+
+  .howLong, .close {
+    font-size: x-small;
+  }
+
+  .editBtn, .trashBtn {
+    background-size: 1em;
+    height: 1.5em;
+  }
+}

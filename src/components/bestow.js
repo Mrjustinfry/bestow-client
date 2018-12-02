@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import Header from './header';
 import AddButton from './addButton';
 import List from './list';
-import Filter from './filter';
 
 class Bestow extends Component {
   render() {

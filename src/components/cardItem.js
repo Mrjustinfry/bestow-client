@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {addItem} from '../actions/actions';
 
 import Card from './card';
+import './card.css';
 
 export class CardItem extends Component {
 constructor(props) {

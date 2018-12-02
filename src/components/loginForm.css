@@ -5,6 +5,7 @@
   padding: 3%;
   text-align: center;
   color: purple;
+  display: flex;
 }
 .logInput {
   font-family: 'Nunito', sans-serif;

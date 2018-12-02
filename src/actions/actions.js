@@ -1,4 +1,3 @@
-
 export const ADD_ITEM = 'ADD_ITEM';
 export const addItem = items => ({
     type: ADD_ITEM,
@@ -46,3 +45,9 @@ export const setFilter = filter => ({
   type: SET_FILTER,
   filter
 });
+
+export const TOGGLE_HIDDEN = 'TOGGLE_HIDDEN';
+export const toggleHidden = cardId => ({
+    type: TOGGLE_HIDDEN,
+    cardId
+})
