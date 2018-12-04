@@ -44,7 +44,10 @@ export default function Info() {
                     <SignupForm
                       />
               </div>
-              <footer className="infoFoot">&#169; <span className="me">Mr.Justin(Fry);</span> 2018</footer>
+              <footer className="infoFoot">&#169; <span className="me">Mr.Justin(Fry);</span> 2018<br />
+              <a href="https://github.com/Mrjustinfry" target="_blank"><img src='./github.png' alt='github' className="contact" /></a>
+                <a href="mailto:mrjustinfry@gmail.com"><img src='./email.png' alt='email' className="contact" /></a>
+              </footer>
             </div>
     );
   };

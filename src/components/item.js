@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
+import NoItems from './noItems';
 import CardItem from './cardItem';
 
 import {addItem, toggleHidden} from '../actions/actions';
@@ -21,15 +22,21 @@ class Item extends Component {
   }
 
   render() {
-    return this.props.items.map((item, index) => (
-      <CardItem
-        toggleHidden={this.toggleHidden(item.cardId)}
-        isHidden={item.hide}
-        key={index}
-        item={item}
-        itemClassName={item.how}
-        itemDefinition={item[this.props.filter]} />
-    ))
+      if(this.props.items.length > 0) {
+        return this.props.items.map((item, index) => (
+          <CardItem
+            toggleHidden={this.toggleHidden(item.cardId)}
+            isHidden={item.hide}
+            key={index}
+            item={item}
+            itemClassName={item.how}
+            itemDefinition={item[this.props.filter]} />
+        ))
+      } else {
+        return (
+          <NoItems />
+        )
+      }
 }};
 
 Item.defaultProps = {

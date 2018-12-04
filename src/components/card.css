@@ -43,14 +43,6 @@ h1 {
   padding: 1%;
 }
 
-.whenIn {
-    background-image: url('/when.png');
-    background-position: 5px 5px;
-    background-repeat: no-repeat;
-    background-size: 7%;
-    text-indent: 12px !important;
-}
-
 @media only screen and (max-width: 780px) {
   .editIn {
     font-size: small;

@@ -35,11 +35,11 @@ class SignupForm extends Component {
              });
        }
        resetInput('signup', {
-       firstName: ' ',
-       lastName: ' ',
-       username: ' ',
-       password: ' ',
-       passwordAgain: ' '
+       firstName: '',
+       lastName: '',
+       username: '',
+       password: '',
+       passwordAgain: ''
    });
    this.props.history.push('/');
   }

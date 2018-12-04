@@ -16,12 +16,12 @@ class LoginForm extends Component {
 
   onSubmit(e) {
       e.preventDefault();
-      /*const username = this.username.value.trim();
+      const username = this.username.value.trim();
       const password = this.password.value.trim();;
       this.props.loginUser({
         username: username,
         password: password
-      });*/
+      });
       let resetInput = (formName, inputsObj) => {
              Object.keys(inputsObj).forEach(inputKey => {
                  this.props.dispatch(change(formName, inputKey, inputsObj[inputKey]));
@@ -29,8 +29,8 @@ class LoginForm extends Component {
              });
        }
        resetInput('login', {
-       username: ' ',
-       password: ' ',
+       username: '',
+       password: '',
    });
    this.props.history.push('/home');
   }

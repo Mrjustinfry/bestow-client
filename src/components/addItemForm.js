@@ -50,9 +50,9 @@ onSubmit(e) {
           });
     }
     resetInput('addItem', {
-    who: ' ',
-    what: ' ',
-    when: ' '
+    who: '',
+    what: '',
+    when: ''
 });
     this.setEditing(!this.state.editing);
 }

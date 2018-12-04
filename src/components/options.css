@@ -2,21 +2,51 @@
   float: right;
   padding: 1.5em;
   list-style: none;
+  height: 100em;
+  position: fixed;
+  top: -1em;
+  right: 0;
+  background-color: mintcream;
+  border-left: 1px solid #f66cfb;
 }
 
-.logoutBtn, .deleteUserBtn, .infoBtn {
+.optionsClose {
   width: 8em;
   padding: 5%;
-  border: 1px solid black;
+  margin: 3%;
+  border-radius: 1em;
+  font-weight: bold;
+  color: purple;
+  background-color: lavender;
+  text-decoration: none;
+  text-align: center;
+}
+
+.optionsClose:hover {
+  cursor: pointer;
+  background-color: #d39df7;
+  -webkit-transition-duration: 300ms;
+  -o-transition-duration: 300ms;
+  transition-duration: 300ms;
+}
+
+.logoutBtn, .deleteUserBtn, .infoBtn, .contactBtn {
+  width: 8em;
+  padding: 5%;
   margin: 3%;
   border-radius: 1em;
   font-weight: bold;
   color: black;
   background-color: #f66cfb;
   text-decoration: none;
+  margin-top: 1em;
 }
 
-.logoutBtn:hover, .infoBtn:hover {
+ a {
+  text-decoration: none;
+}
+
+.logoutBtn:hover, .infoBtn:hover, .contactBtn:hover {
   cursor: pointer;
   background-color: #f9b0fc;
 }
@@ -25,5 +55,10 @@
   cursor: pointer;
   background-color: #4605a5;
   color: white;
-  border: 1px solid white;
+}
+
+@media only screen and (max-width: 780px) {
+  .optionsBox {
+    font-size: x-small;
+  }
 }

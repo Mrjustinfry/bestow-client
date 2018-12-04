@@ -23,7 +23,7 @@ export default class Input extends Component {
 
         return (
             <div className="">
-                <label htmlFor={this.props.input.name}>
+                <label htmlFor={this.props.input.name} style={{marginTop:'.3em'}}>
                     {this.props.label}
                     {error}
                     {warning}

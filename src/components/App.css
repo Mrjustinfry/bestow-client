@@ -21,3 +21,10 @@
   background-color: #f3d1f48f;
   text-align: center;
 }
+
+@media only screen and (max-width: 780px) {
+  .logo {
+    height: 85%;
+    width: 85%
+  }
+}
