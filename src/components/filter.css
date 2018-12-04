@@ -31,7 +31,7 @@
 }
 
 .searchInput {
-  background-image: url(/search.png);
+  background-image: url('/search.png');
   width: 2.5em;
   height: 2.5em;
   -webkit-transition: width 1s ease-in-out;
