@@ -10,6 +10,9 @@ import {required, valid} from '../validator';
 import './loginForm.css';
 
 class LoginForm extends Component {
+  constructor(props) {
+    super(props);
+  }
 
   onSubmit(e) {
       e.preventDefault();
