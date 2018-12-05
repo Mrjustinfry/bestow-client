@@ -4,7 +4,7 @@ import {shallow} from 'enzyme'; //don't forget to add "mount" for fullDOM
 import store from '../store';
 import Options from './options';
 
-describe('<LoginForm />', () => {
+describe.only('<Options />', () => {
     it('Renders without crashing', () => {
         shallow(<Options store={store} />);
     });
