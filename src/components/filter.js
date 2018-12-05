@@ -39,21 +39,21 @@ toggleHidden () {
           <ul className="filterList">
             <li className="filter">
               <img
-                src="who.png"
+                src="/who.png"
                 value="who"
                 alt="who"
                 className="icons"
                 onClick={() => this.setFilter("who")} /></li>
             <li className="filter">
               <img
-                src="what.png"
+                src="/what.png"
                 value="what"
                 alt="what"
                 className="icons"
                 onClick={() => this.setFilter("what")} /></li>
             <li className="filter">
               <img
-                src="when.png"
+                src="/when.png"
                 value="when"
                 alt="when"
                 className="icons"
@@ -82,7 +82,8 @@ toggleHidden () {
 const mapStateToProps = state => ({
     items: state.bestow.items,
     searchItem: state.searchItem,
-    filter: state.filter
+    filter: state.filter,
+    visible: state.visible
 });
 
 export default connect(mapStateToProps, {setFilter})(Filter);

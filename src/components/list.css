@@ -136,6 +136,7 @@ img {
 }
 
 .howLong {
+  text-align: center;
   font-size: medium;
   font-weight: normal;
 }
@@ -146,11 +147,11 @@ img {
   }
 
   .howLong, .close {
-    font-size: x-small;
+    font-size: small;
   }
 
   .editBtn, .trashBtn {
     background-size: 1em;
-    height: 1.5em;
+    height: 2em;
   }
 }

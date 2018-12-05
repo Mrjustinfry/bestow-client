@@ -40,12 +40,12 @@ export default function Info() {
               </div>
               <div className="infoSignupBox">
                 <h3 className="questionSignup">How do I get started?</h3>
-                  <p><a id='signup'>That's easy! Just sign up!</a></p>
+                  <p><span id='signup'>That's easy! Just sign up!</span></p>
                     <SignupForm
                       />
               </div>
               <footer className="infoFoot">&#169; <span className="me">Mr.Justin(Fry);</span> 2018<br />
-              <a href="https://github.com/Mrjustinfry" target="_blank"><img src='./github.png' alt='github' className="contact" /></a>
+              <a href="https://github.com/Mrjustinfry" target="_blank" rel="noopener noreferrer"><img src='./github.png' alt='github' className="contact" /></a>
                 <a href="mailto:mrjustinfry@gmail.com"><img src='./email.png' alt='email' className="contact" /></a>
               </footer>
             </div>

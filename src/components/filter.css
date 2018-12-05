@@ -8,10 +8,11 @@
 }
 
 .icons {
-  height: 1.5em;
-  width: 1.5em;
-  padding: 1em;
-  border-radius: 1em;
+  height: 2em;
+  width: 2em;
+  margin: .8em;
+  margin-left: .3em;
+  margin-top: 1em;
 }
 
 .filterList {
@@ -21,7 +22,7 @@
 
 .icons:hover {
   cursor: pointer;
-  box-shadow: inset 0px 0px 20px purple;
+  padding: 2%;
   transition-duration: 500ms;
 }
 
@@ -34,6 +35,8 @@
   background-image: url('/search.png');
   width: 2.5em;
   height: 2.5em;
+  margin-top: 2.3em;
+  margin-left: .3em;
   -webkit-transition: width 1s ease-in-out;
   -o-transition: width 1s ease-in-out;
   transition: width 1s ease-in-out;
@@ -44,7 +47,6 @@
   border: 1px solid white;
   border-radius: 2em;
   padding: .5em;
-  margin-top: 2em;
   float: left;
 }
 
@@ -70,3 +72,20 @@
   justify-content: space-around;
   border-bottom: 1px solid #d571d7;
 }
+
+@media only screen and (max-width: 720px) {
+  .icons {
+    height: 1.5em;
+    width: 1.5em;
+  }
+
+  .searchInput {
+    height: 2em;
+    width: 2em;
+  }
+
+  .searchInput:focus {
+      width: 33%;
+  }
+
+  }

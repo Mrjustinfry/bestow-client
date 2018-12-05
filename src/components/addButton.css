@@ -38,5 +38,5 @@
     background-position: 5px 5px;
     background-repeat: no-repeat;
     background-size: 7%;
-    text-indent: 1em;
+    text-indent: 1em !important;
 }

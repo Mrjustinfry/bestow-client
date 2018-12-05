@@ -22,12 +22,12 @@ export default class Input extends Component {
         }
 
         return (
-            <div className="">
-                <label htmlFor={this.props.input.name} style={{marginTop:'.3em'}}>
+            <div>
+                <label htmlFor={this.props.input.name} style={{marginTop:'.3em',textAlign:'center'}}>
                     {this.props.label}
                     {error}
                     {warning}
-                </label>
+                </label><br />
                 <Element
                     {...this.props.input}
                     id={this.props.input.name}

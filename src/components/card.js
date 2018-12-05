@@ -59,9 +59,8 @@ deleteItem() {
           </span>
           <p className="whatItem">{this.props.what}</p>
           <p className="whoItem">{this.props.who}</p>
-          <p className="whenItem">{this.props.when}
-            <span className="howLong">  - ({this.props.how + ' ' + this.timeLapse()}) -</span>
-          </p>
+          <p className="whenItem">{this.props.when}</p>
+          <p className="howLong">  - ({this.props.how + ' ' + this.timeLapse()}) -</p>
         </div>
       );
   }
