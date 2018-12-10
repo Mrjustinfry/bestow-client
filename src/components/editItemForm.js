@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {reduxForm, Field, focus} from 'redux-form';
 import {connect} from 'react-redux';
- 
+
 import Input from './input';
 import {required, valid} from '../validator';
 import {editItem} from '../actions/actions';
@@ -13,6 +13,7 @@ class EditItemForm extends Component {
     super(props);
     this.state = {
       items: this.props.items,
+      theUser: this.props.theUser,
       editing: true,
     }
     this.onSubmit = this.onSubmit.bind(this);

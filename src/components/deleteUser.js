@@ -7,9 +7,9 @@ import {deleteUser} from '../actions/actions';
 import './deleteUser.css';
 
 export class DeleteUser extends Component {
-
-  deleteUser() {
-    this.props.deleteUser(this.props.userId);
+  
+  deleteTheUser(props) {
+    this.props.deleteUser(localStorage.localUserId);
     this.props.history.push('/');
   }
 
@@ -20,7 +20,7 @@ export class DeleteUser extends Component {
           <h2 className="permanent">This cannot be undone</h2>
             <button
               className="yes"
-              onClick ={() => this.deleteUser(this.props.userId)}
+              onClick ={() => this.deleteTheUser()}
               type="button">Yes, delete my account</button>
             <button className="no" type="button">
               <Link to="/home" style={{textDecoration:'none',color:'inherit',fontWeight:'unset'}}>No, take me back to Bestow</Link>
@@ -30,7 +30,7 @@ export class DeleteUser extends Component {
 }
 
 const mapStateToProps = state => ({
-    users: state.users
+    theUser: state.bestow.theUser
 });
 
 export default withRouter(connect(mapStateToProps, {deleteUser})(DeleteUser));

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {reduxForm, Field, focus, change, untouch} from 'redux-form';
+import {reduxForm, Field, focus, change, untouch, SubmissionError} from 'redux-form';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 
@@ -10,36 +10,68 @@ import {required, valid} from '../validator';
 import './loginForm.css';
 
 class LoginForm extends Component {
-  constructor(props) {
-    super(props);
-  }
+constructor(props) {
+  super(props);
 
-  onSubmit(e) {
-      e.preventDefault();
+  this.state = {
+    loggedIn: false
+  }
+}
+  submit = () => {
       const username = this.username.value.trim();
-      const password = this.password.value.trim();;
-      this.props.loginUser({
-        username: username,
-        password: password
-      });
-      let resetInput = (formName, inputsObj) => {
-             Object.keys(inputsObj).forEach(inputKey => {
-                 this.props.dispatch(change(formName, inputKey, inputsObj[inputKey]));
-                 this.props.dispatch(untouch(formName, inputKey));
-             });
-       }
-       resetInput('login', {
-       username: '',
-       password: '',
-   });
-   this.props.history.push('/home');
-  }
+      const password = this.password.value.trim();
+      return new Promise((resolve, reject) => {
+        this.props.loginUser({
+          username: username,
+          password: password,
+          loggedIn: true
+        }).then(() => resolve())
+        .catch(err => {
+            const {code} = err;
+            const message =
+                code === 401
+                    ? 'Incorrect username or password'
+                    : 'Unable to login, please try again';
+            //dispatch(authTokenError(err));
+            return reject(
+              new SubmissionError({
+                     _error: message
+                 })
+            )
+        });
+        let resetInput = (formName, inputsObj) => {
+               Object.keys(inputsObj).forEach(inputKey => {
+                   this.props.dispatch(change(formName, inputKey, inputsObj[inputKey]));
+                   this.props.dispatch(untouch(formName, inputKey));
+               });
+         }
+         resetInput('login', {
+         username: '',
+         password: '',
+     });
+      })
+ }
 
-  render() {
+  render(props) {
+    let error;
+    let load;
+      if (this.props.error) {
+          error = (
+              <div className="form-error" aria-live="polite">
+                  {this.props.error}
+              </div>
+          );
+      } else if(this.props.loading) {
+        load = (
+          <div className="form-error" aria-live="polite">
+            Loading...
+          </div>
+        )
+      }
       return (
           <div className="loginForm">
             <form
-              onSubmit={this.onSubmit.bind(this)}>
+              onSubmit={this.props.handleSubmit(this.submit)}>
             <Field
                 name="username"
                 type="text"
@@ -47,6 +79,7 @@ class LoginForm extends Component {
                 display="logInput"
                 label="Username"
                 validate={[required, valid]}
+                ref={input => (this.username = input)}
             />
             <br />
             <Field
@@ -56,7 +89,10 @@ class LoginForm extends Component {
                 display="logInput"
                 label="Password"
                 validate={[required, valid]}
+                ref={input => (this.password = input)}
             />
+            {error}
+            {load}
               <br />
                 <button
                   className="logBtn"
@@ -68,7 +104,8 @@ class LoginForm extends Component {
   }
 }
 
-const LoginFormConnected = connect()(LoginForm)
+
+const LoginFormConnected = connect(null, {loginUser})(LoginForm)
 
 export default withRouter(reduxForm({
     form: 'login',

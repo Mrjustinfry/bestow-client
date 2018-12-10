@@ -5,7 +5,7 @@ import AddButton from './addButton';
 import {required, valid} from '../validator';
 import {connect} from 'react-redux';
 
-import {addItem} from '../actions/actions';
+import {addItem, getItems, getUserItems} from '../actions/actions';
 
 import './addButton.css';
 import './addItem.css';
@@ -14,7 +14,8 @@ class AddItemForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        editing: true
+        editing: true,
+        theUser: this.props.theUser
     }
     this.onSubmit = this.onSubmit.bind(this);
     this.setEditing = this.setEditing.bind(this);
@@ -30,13 +31,12 @@ onSubmit(e) {
     e.preventDefault();
     const who = this.whoInput.value.trim();
     const what = this.whatInput.value.trim();
-    const when = this.whenInput.value.trim();
+    const when = this.whenInput.value;
+    const userId = localStorage.localUserId;
     const hide  = true;
-    const cardId = Math.random();
     const how = e.target.id;
     this.props.addItem({
-      isHidden: true,
-      cardId: cardId,
+      userId: userId,
       hide: hide,
       who: who,
       what: what,
@@ -55,10 +55,11 @@ onSubmit(e) {
     when: ''
 });
     this.setEditing(!this.state.editing);
+    this.props.getItems();
 }
 
 
-  render() {
+  render(props) {
     if (this.state.editing) {
       return (
         <form className="itemForm">
@@ -113,16 +114,10 @@ onSubmit(e) {
 }
 
 const mapStateToProps = state => ({
-  items: {
-    hide: state.hide,
-    who: state.who,
-    what: state.what,
-    when: state.when,
-    how: state.how
-  }
+  items: state.items
 });
 
-const AddItemFormConnected = connect(mapStateToProps, {addItem})(AddItemForm)
+const AddItemFormConnected = connect(mapStateToProps, {addItem, getUserItems, getItems})(AddItemForm)
 
 export default reduxForm({
     form: 'addItem',

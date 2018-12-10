@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {deleteAuthToken, removeAuthToken} from '../actions/actions';
+import {clearAuthToken} from '../validator';
 
 import './options.css';
 
@@ -12,6 +14,7 @@ constructor(props) {
     visible: true
   }
 this.toggleHidden = this.toggleHidden.bind(this);
+this.logOut = this.logOut.bind(this);
 }
 
 toggleHidden () {
@@ -19,13 +22,21 @@ toggleHidden () {
     visible: !this.state.visible
   })
 }
+logOut() {
+  this.props.deleteAuthToken();
+  clearAuthToken();
+  this.setState({
+    hasAuthToken: false
+  })
+}
 
-  render() {
+
+  render(props) {
     if(this.state.visible === true) {
     return (
       <ul className="optionsBox">
         <li><p className="optionsClose" onClick={this.toggleHidden}>close</p></li>
-        <li className="logoutBtn">log out</li>
+        <li className="logoutBtn" onClick={this.logOut}>log out</li>
         <li className="infoBtn"><Link to="/info" style={{textDecoration:'none',color:'black'}}>info</Link></li>
         <li className="contactBtn"><a href="mailto:mrjustinfry@gmail.com" style={{textDecoration:'none',color:'black'}}>contact</a></li>
         <li className="deleteUserBtn"><Link to="/delete" style={{textDecoration:'none',color:'inherit'}}>delete account</Link></li>
@@ -42,4 +53,9 @@ toggleHidden () {
   }
 };
 
-export default connect()(Options)
+const mapStateToProps = state => ({
+    theUser: state.bestow.theUser,
+    hasAuthToken: state.hasAuthToken
+});
+
+export default connect(mapStateToProps, {deleteAuthToken, removeAuthToken, clearAuthToken})(Options)

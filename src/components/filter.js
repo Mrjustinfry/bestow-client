@@ -15,7 +15,7 @@ constructor(props) {
     visible: false
   }
 this.setFilter = this.setFilter.bind(this);
-this.onChange = this.onChange.bind(this);
+//this.onChange = this.onChange.bind(this);
 this.toggleHidden = this.toggleHidden.bind(this);
 }
 
@@ -80,6 +80,7 @@ toggleHidden () {
 }
 
 const mapStateToProps = state => ({
+    theUser: state.bestow.theUser,
     items: state.bestow.items,
     searchItem: state.searchItem,
     filter: state.filter,

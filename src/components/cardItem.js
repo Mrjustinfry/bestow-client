@@ -29,6 +29,7 @@ constructor(props) {
 }
 
 const mapStateToProps = state => ({
+    theUser: state.bestow.theUser,
     searchItem: state.searchItem,
     filter: state.bestow.filter,
     items: state.bestow.items

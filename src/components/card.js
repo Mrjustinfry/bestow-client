@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
-import {editItem, deleteItem} from '../actions/actions';
+import {deleteItem} from '../actions/actions';
 
 import EditItemForm from './editItemForm';
 
@@ -13,6 +13,7 @@ constructor(props) {
   super(props);
 
   this.state = {
+      theUser: this.props.theUser,
       editing: false,
       isHidden: 'true'
   };
@@ -33,7 +34,7 @@ constructor(props) {
     if(date2>=date1){
       if(diffDays>1){
         return 'about ' + diffDays + ' days ago';
-      } else if(diffDays=1){
+      } else if(diffDays===1){
         return ' yesterday';
       }
     }else if (date2<date1){
@@ -41,7 +42,7 @@ constructor(props) {
   }
 }
 
-deleteItem() {
+deleteUserItem() {
   this.props.deleteItem(this.props.cardId);
 }
 
@@ -55,11 +56,11 @@ deleteItem() {
               onClick={() => this.setEditing(!this.state.editing)}></button>
             <button
               className="trashBtn"
-              onClick ={() => this.deleteItem(this.props.cardId)} ></button>
+              onClick ={() => this.deleteUserItem(this.props.cardId)} ></button>
           </span>
           <p className="whatItem">{this.props.what}</p>
           <p className="whoItem">{this.props.who}</p>
-          <p className="whenItem">{this.props.when}</p>
+          <p className="whenItem">{this.props.when.toDateString()}</p>
           <p className="howLong">  - ({this.props.how + ' ' + this.timeLapse()}) -</p>
         </div>
       );
@@ -79,4 +80,4 @@ const mapStateToProps = state => ({
     items: state.items
 });
 
-export default connect(mapStateToProps, {editItem, deleteItem})(Card);
+export default connect(mapStateToProps, { deleteItem })(Card);

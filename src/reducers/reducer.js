@@ -1,15 +1,21 @@
-import {SET_FILTER,
-        ADD_ITEM,
-        EDIT_ITEM,
-        DELETE_ITEM,
-        ADD_USER,
-        DELETE_USER,
-        LOGIN_USER,
-        GET_ITEMS,
-        TOGGLE_HIDDEN
-        } from '../actions/actions';
+import {
+        ADD_ITEM_SUCCESS,
+        EDIT_ITEM_REQ, EDIT_ITEM_SUCCESS,
+        DELETE_ITEM_SUCCESS,
+        ADD_USER_SUCCESS,
+        DELETE_USER_SUCCESS,
+        GET_AUTH_TOKEN, DELETE_AUTH_TOKEN,
+        AUTH_TOKEN_REQ, AUTH_TOKEN_SUCCESS, AUTH_TOKEN_ERROR,
+        GET_ITEMS_REQ, GET_ITEMS_SUCCESS, GET_USER_ITEMS,
+        TOGGLE_HIDDEN, SET_FILTER
+      } from '../actions/actions';
 
 const initialState = {
+  authToken: null,
+  theUser: null,
+  loading: false,
+  error: null,
+  loggedIn: '',
   users: [
     {
       userId: 1,
@@ -19,7 +25,7 @@ const initialState = {
     }
   ],
   items: [
-      {
+      /*{
         cardId: 1,
         hide: true,
         who: 'karen',
@@ -50,7 +56,7 @@ const initialState = {
         what: 'Pulp Fiction',
         when: '03-03-18',
         how: 'bestowed'
-      },
+      },*/
   ]
 };
 
@@ -58,20 +64,56 @@ const initialState = {
 export const itemReducer = (state=initialState, action) => {
   const {type} = action;
   switch(type){
-    case ADD_ITEM:
+
+    // AUTH REDUCERS //
+    case GET_AUTH_TOKEN:
         return Object.assign({}, state, {
-        items: [...state.items, {
-            cardId: action.items.cardId,
-            hide: action.items.hide,
-            who: action.items.who,
-            what: action.items.what,
-            when: action.items.when,
-            how: action.items.how
-        }]
+            authToken: action.authToken
+        });
+    case DELETE_AUTH_TOKEN:
+        return Object.assign({}, state, {
+            authToken: null,
+            theUser: null,
+            loggedIn: false,
+            hasAuthToken: false
+        });
+    case AUTH_TOKEN_REQ:
+        return Object.assign({}, state, {
+            loading: true,
+            error: null
+        });
+    case AUTH_TOKEN_SUCCESS:
+        return Object.assign({}, state, {
+            loading: false,
+            theUser: action.theUser,
+            loggedIn: true
+        });
+    case AUTH_TOKEN_ERROR:
+        return Object.assign({}, state, {
+            loading: false,
+            error: action.error
+        });
+
+        // ITEM REDUCERS //
+    case GET_ITEMS_REQ || EDIT_ITEM_REQ:
+      return Object.assign({}, state, {
+            loading: true,
+            error: null
+      })
+    case ADD_ITEM_SUCCESS:
+        return Object.assign({}, state, {
+        items: [...state.items]
       });
-    case GET_ITEMS:
-      return [...state];
-    case EDIT_ITEM:
+    case GET_ITEMS_SUCCESS:
+      return Object.assign({}, state, {
+        items: action.items
+      });
+    case GET_USER_ITEMS:
+      const userItems = state.items.filter(item => item.user._id === action.userId);
+      return Object.assign({}, state, {
+            items: [...userItems]
+      })
+    case EDIT_ITEM_SUCCESS:
       const editItems = state.items.filter(item => item.cardId !== action.item.cardId);
       return Object.assign({}, state, {
           items: [...editItems, {
@@ -83,29 +125,29 @@ export const itemReducer = (state=initialState, action) => {
             how: action.item.how
           }]
       });
-    case DELETE_ITEM:
-      const items = state.items.filter(item => item.cardId !== action.item);
+    case DELETE_ITEM_SUCCESS:
+      const items = state.items.filter(item => item.cardId !== action.cardId);
           return Object.assign({}, state, {
             items: [...items]
         });
-    case ADD_USER:
+
+        // USER REDUCERS //
+    case ADD_USER_SUCCESS://Duplicate????
       return Object.assign({}, state, {
         users: [...state.users, {
             firstName: action.user.firstName,
             lastName: action.user.lastName,
             username: action.user.username,
             password: action.user.password
-    }]
-  });
-    case DELETE_USER:
+        }]
+      });
+    case DELETE_USER_SUCCESS:
       const users = state.users.filter(user => user.userId !== action.user);
         return Object.assign({}, state, {
           users: [...users]
         });
-    case LOGIN_USER:
-      return Object.assign({}, state, {
 
-      });
+        // OTHER REDUCERS //
     case SET_FILTER:
       return Object.assign({}, state, {
           filter: action.filter
