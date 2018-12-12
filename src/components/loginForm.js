@@ -32,7 +32,6 @@ constructor(props) {
                 code === 401
                     ? 'Incorrect username or password'
                     : 'Unable to login, please try again';
-            //dispatch(authTokenError(err));
             return reject(
               new SubmissionError({
                      _error: message
@@ -64,7 +63,7 @@ constructor(props) {
       } else if(this.props.loading) {
         load = (
           <div className="form-error" aria-live="polite">
-            Loading...
+            <p>Loading...</p>
           </div>
         )
       }
@@ -104,8 +103,11 @@ constructor(props) {
   }
 }
 
+const mapStateToProps = state => ({
+  loading: state.bestow.loading
+})
 
-const LoginFormConnected = connect(null, {loginUser})(LoginForm)
+const LoginFormConnected = connect(mapStateToProps, {loginUser})(LoginForm)
 
 export default withRouter(reduxForm({
     form: 'login',

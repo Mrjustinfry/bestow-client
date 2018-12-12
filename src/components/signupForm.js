@@ -56,12 +56,20 @@ submit = () => {
 
   render(props) {
     let error;
+    let load;
       if (this.props.error) {
           error = (
               <div className="form-error" aria-live="polite">
                   {this.props.error}
               </div>
           );
+      }
+      if (this.props.loading) {
+        load = (
+          <div className="loading" aria-live="polite">
+            <p>Loading...</p>
+          </div>
+        )
       }
       return (
           <div className="signupForm suContainer">
@@ -125,6 +133,7 @@ submit = () => {
                     disabled={this.props.pristine || this.props.submitting}>
                     Sign Up
                 </button>
+                {load}
             </form>
           </div>
       );
@@ -136,6 +145,7 @@ const mapStateToProps = state => ({
     theUser: state.bestow.theUser,
     items: state.bestow.items,
     hasAuthToken: state.authToken !== null,
+    loading: state.bestow.loading
 });
 
 const SignupFormConnected = connect(mapStateToProps, {signupUser})(SignupForm)

@@ -14,9 +14,7 @@ import './loginForm.css';
 class App extends Component {
 
   componentWillUpdate(prevProps) {
-    /*if(prevProps.theUser && !this.props.theUser) {
-      return this.setState({theUser: this.props.theUser});
-    } else*/ if (!prevProps.loggedIn && this.props.loggedIn) {
+    if (!prevProps.loggedIn && this.props.loggedIn) {
       return this.stopRefresh();
     } else if (prevProps.loggedIn && !this.props.loggedIn) {
       return this.startRefresh();
@@ -57,7 +55,6 @@ class App extends Component {
                     <Route exact path="/info" component={Info} />
                     <Route exact path="/delete"
                       component={DeleteUser}
-                      //theUser={this.props.theUser}
                       />
                   </Switch>
                 </main>
@@ -71,7 +68,6 @@ const mapStateToProps = state => ({
     items: state.bestow.items,
     theUser: state.bestow.theUser,
     hasAuthToken: state.authToken !== null,
-    //loggedIn: state.bestow.theUser !== null
 });
 
 export default connect(mapStateToProps)(App);

@@ -52,6 +52,7 @@ class EditItemForm extends Component {
             className="borrowBtn"
             id="borrowed"
             value="borrowed"
+            aria-label="borrowed"
             type="button">Borrowed</button>
           <button
             style={{padding:'1%'}}
@@ -59,6 +60,7 @@ class EditItemForm extends Component {
             className="bestowBtn"
             id="bestowed"
             value="bestowed"
+            aria-label="bestowed"
             type="button">Bestowed</button>
             <br />
           <Field

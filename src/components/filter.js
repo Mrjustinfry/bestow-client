@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {setFilter} from '../actions/actions';
+import {setFilter, getUserItems, filterItems} from '../actions/actions';
 
 import Options from './options';
 
@@ -23,9 +23,12 @@ setFilter(type) {
    this.props.setFilter(type);
 }
 
+
 onChange(searchItem) {
   this.setState({searchItem})
+    return this.props.filterItems(searchItem.toLowerCase())
 }
+
 
 toggleHidden () {
   this.setState({
@@ -87,7 +90,7 @@ const mapStateToProps = state => ({
     visible: state.visible
 });
 
-export default connect(mapStateToProps, {setFilter})(Filter);
+export default connect(mapStateToProps, {setFilter, getUserItems, filterItems})(Filter);
 
 
 /*

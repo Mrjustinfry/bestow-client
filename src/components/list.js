@@ -19,7 +19,8 @@ class List extends Component {
 }
 
 const mapStateToProps = state => ({
-    theUser: state.bestow.theUser
+    theUser: state.bestow.theUser,
+    loading: state.bestow.loading
 });
 
 export default connect(mapStateToProps)(List);

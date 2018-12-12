@@ -12,7 +12,8 @@ export class Header extends Component {
     super(props);
 
     this.state = {
-      loggedIn: this.props.loggedIn
+      loggedIn: this.props.loggedIn,
+      searchItem: ''
     }
   }
 
@@ -48,7 +49,7 @@ getName() {
       return (
         <header className="head">
           <h2 className="greeting">{message} {name}!</h2>
-          <Filter />
+          <Filter onChange={searchItem => this.setState({searchItem})}  />
         </header>
       );
   }
@@ -58,6 +59,7 @@ getName() {
 
 const mapStateToProps = (state) => ({
   theUser: state.bestow.theUser,
+  searchItem: state.searchItem,
   users: state.users,
   filter: state.filter
 });

@@ -7,12 +7,7 @@ import Card from './card';
 import './card.css';
 
 export class CardItem extends Component {
-constructor(props) {
-  super(props);
-  this.state = {
-    searchItem: this.props.searchItem
-  }
-}
+
   toggleHidden = () => {
     this.props.toggleHidden(this.props.item.cardId)
   }
@@ -30,9 +25,9 @@ constructor(props) {
 
 const mapStateToProps = state => ({
     theUser: state.bestow.theUser,
-    searchItem: state.searchItem,
     filter: state.bestow.filter,
-    items: state.bestow.items
+    items: state.bestow.items,
+    searchCollection: state.bestow.searchCollection
 });
 
 export default connect(mapStateToProps, {addItem})(CardItem);

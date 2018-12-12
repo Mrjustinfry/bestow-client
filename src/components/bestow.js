@@ -25,7 +25,7 @@ class Bestow extends Component {
 }
 
 Bestow.defaultProps = {
-  theUser: ''
+  theUser: 'Friend'
 }
 
 const mapStateToProps = state => ({

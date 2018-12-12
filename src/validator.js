@@ -27,14 +27,14 @@ export const loadAuthToken = () => {
 
 export const saveAuthToken = authToken => {
   try {
-      localStorage.setItem('authToken', JSON.stringify(authToken).replace(/\"/g, ""));
+      localStorage.setItem('authToken', JSON.parse(JSON.stringify(authToken)));
   } catch (e) {console.log('error')}
 };
 
 export const saveUserInfo = (userInfo) => {
   try {
-      localStorage.setItem('localUserId', JSON.stringify(userInfo.userId).replace(/\"/g, ""));
-      localStorage.setItem('localUserName', JSON.stringify(userInfo.firstName).replace(/\"/g, ""));
+      localStorage.setItem('localUserId', JSON.parse(JSON.stringify(userInfo.userId)));
+      localStorage.setItem('localUserName', JSON.parse(JSON.stringify(userInfo.firstName)));
   } catch (e) {console.log('error')}
 };
 

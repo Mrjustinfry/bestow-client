@@ -124,7 +124,6 @@ export const editItem = (item, callback) =>(dispatch, getState) => {
           when: item.when,
           hide: item.hide
         }),
-        //dataType: 'jsonp',
         headers: {
           'Content-Type': 'application/json',
         Authorization: `Bearer ${authToken}`
@@ -360,8 +359,20 @@ export const setFilter = filter => ({
   filter
 });
 
+export const FILTER_ITEMS = 'FILTER_ITEMS';
+export const filterItems = searchItem => ({
+  type: FILTER_ITEMS,
+  searchItem
+});
+
 export const TOGGLE_HIDDEN = 'TOGGLE_HIDDEN';
 export const toggleHidden = cardId => ({
     type: TOGGLE_HIDDEN,
+    cardId
+})
+
+export const TOGGLE_HIDDEN_COLLECTION = 'TOGGLE_HIDDEN_COLLECTION';
+export const toggleHiddenCollection = cardId => ({
+    type: TOGGLE_HIDDEN_COLLECTION,
     cardId
 })

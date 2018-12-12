@@ -5,7 +5,7 @@ import Landing from './landing';
 import NoItems from './noItems';
 import CardItem from './cardItem';
 
-import {addItem, toggleHidden, getItems, getUserItems} from '../actions/actions';
+import {addItem, toggleHidden, toggleHiddenCollection, getItems, getUserItems, filterItems} from '../actions/actions';
 
 import './list.css';
 import './card.css'
@@ -14,7 +14,8 @@ class Item extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchItem: ''
+      searchItem: this.props.searchItem,
+      items: ''
     }
   }
 
@@ -34,19 +35,33 @@ class Item extends Component {
 
   componentDidMount() {
       this.props.getItems();
-      this.userItems();
+      return this.userItems();
     }
 
   toggleHidden = cardId => () => {
     this.props.toggleHidden(cardId)
   }
 
+  toggleHiddenCollection = cardId => () => {
+    this.props.toggleHiddenCollection(cardId)
+  }
+
   render(props) {
     if (!localStorage.authToken) {
-      return (<Landing />);
-    }
-
-      if (this.props.items.length > 0) {
+        return(<Landing />);
+    } else if (this.props.items.length === 0) {
+        return(<NoItems />);
+    } else if (this.props.searchCollection.length !== 0) {
+        return this.props.searchCollection.map((item, index) => (
+          <CardItem
+            toggleHidden={this.toggleHiddenCollection(item.cardId)}
+            isHidden={item.hide}
+            key={index}
+            item={item}
+            itemClassName={item.how}
+            itemDefinition={item[this.props.filter].replace('T00:00:00.000Z', '')} />
+        ))
+    } else if (this.props.items.length > 0) {
         return this.props.items.map((item, index) => (
           <CardItem
             toggleHidden={this.toggleHidden(item.cardId)}
@@ -54,12 +69,9 @@ class Item extends Component {
             key={index}
             item={item}
             itemClassName={item.how}
-            itemDefinition={item[this.props.filter]} />
+            itemDefinition={item[this.props.filter].replace('T00:00:00.000Z', '')} />
         ))
-      }
-        return (
-          <NoItems />
-        )
+    }
 }};
 
 Item.defaultProps = {
@@ -70,24 +82,8 @@ Item.defaultProps = {
 const mapStateToProps = state => ({
     theUser: state.bestow.theUser,
     items: state.bestow.items,
-    filter: state.bestow.filter
+    filter: state.bestow.filter,
+    searchCollection: state.bestow.searchCollection
 });
 
-export default connect(mapStateToProps, {addItem, toggleHidden, getItems, getUserItems})(Item);
-
-
-/* else if(this.props.searchItem) {
-  const listItems = this.props.items.filter(item =>
-    item.what.toLowerCase().includes(
-        this.props.searchItem.toLowerCase()
-  ));
-  return this.props.items.map((item, index) => (
-    <CardItem
-      toggleHidden={this.toggleHidden(item.cardId)}
-      isHidden={item.hide}
-      key={index}
-      item={listItems}
-      itemClassName={item.how}
-      itemDefinition={item[this.props.filter]} />
-    ))
-}*/
+export default connect(mapStateToProps, {addItem, toggleHidden, toggleHiddenCollection, getItems, getUserItems})(Item);

@@ -17,9 +17,7 @@ class Landing extends Component {
   }
 
   componentWillUpdate(prevProps) {
-    /*if (!prevProps.theUser && this.props.theUser) {
-        return this.setState({theUser: prevProps.theUser})
-    } else*/ if (prevProps.loggedIn && !this.props.loggedIn) {
+    if (prevProps.loggedIn && !this.props.loggedIn) {
         return this.setState({loggedIn: false});
     } else if (!prevProps.loggedIn && this.props.loggedIn) {
         return this.setState({loggedIn: true});

@@ -7,7 +7,7 @@ import {
         GET_AUTH_TOKEN, DELETE_AUTH_TOKEN,
         AUTH_TOKEN_REQ, AUTH_TOKEN_SUCCESS, AUTH_TOKEN_ERROR,
         GET_ITEMS_REQ, GET_ITEMS_SUCCESS, GET_USER_ITEMS,
-        TOGGLE_HIDDEN, SET_FILTER
+        TOGGLE_HIDDEN, TOGGLE_HIDDEN_COLLECTION, SET_FILTER, FILTER_ITEMS
       } from '../actions/actions';
 
 const initialState = {
@@ -16,14 +16,9 @@ const initialState = {
   loading: false,
   error: null,
   loggedIn: '',
-  users: [
-    {
-      userId: 1,
-      firstName: 'Justin',
-      lastName: 'Fry',
-      username: 'Mrjustinfry'
-    }
-  ],
+  searchItem: '',
+  users: [],
+  searchCollection: [],
   items: [
       /*{
         cardId: 1,
@@ -75,7 +70,8 @@ export const itemReducer = (state=initialState, action) => {
             authToken: null,
             theUser: null,
             loggedIn: false,
-            hasAuthToken: false
+            hasAuthToken: false,
+            searchCollection: []
         });
     case AUTH_TOKEN_REQ:
         return Object.assign({}, state, {
@@ -102,11 +98,13 @@ export const itemReducer = (state=initialState, action) => {
       })
     case ADD_ITEM_SUCCESS:
         return Object.assign({}, state, {
-        items: [...state.items]
+        items: [...state.items],
+        loading: false
       });
     case GET_ITEMS_SUCCESS:
       return Object.assign({}, state, {
-        items: action.items
+        items: action.items,
+        loading: false
       });
     case GET_USER_ITEMS:
       const userItems = state.items.filter(item => item.user._id === action.userId);
@@ -123,12 +121,14 @@ export const itemReducer = (state=initialState, action) => {
             what: action.item.what,
             when: action.item.when,
             how: action.item.how
-          }]
+          }],
+          loading: false
       });
     case DELETE_ITEM_SUCCESS:
       const items = state.items.filter(item => item.cardId !== action.cardId);
           return Object.assign({}, state, {
-            items: [...items]
+            items: [...items],
+            loading: false
         });
 
         // USER REDUCERS //
@@ -144,7 +144,8 @@ export const itemReducer = (state=initialState, action) => {
     case DELETE_USER_SUCCESS:
       const users = state.users.filter(user => user.userId !== action.user);
         return Object.assign({}, state, {
-          users: [...users]
+          users: [...users],
+          loading: false
         });
 
         // OTHER REDUCERS //
@@ -152,6 +153,12 @@ export const itemReducer = (state=initialState, action) => {
       return Object.assign({}, state, {
           filter: action.filter
         });
+    case FILTER_ITEMS:
+      let filteredItems = state.items.filter(item => item.who.toLowerCase().indexOf(action.searchItem) !== -1 || item.what.toLowerCase().indexOf(action.searchItem) !== -1 || item.when.indexOf(action.searchItem) !== -1);
+          return Object.assign({}, state, {
+            items: [...state.items],
+            searchCollection: filteredItems
+          });
     case TOGGLE_HIDDEN:
       const indexItem = state.items.findIndex(item => item.cardId === action.cardId);
       const itemToggle = state.items[indexItem];
@@ -166,6 +173,20 @@ export const itemReducer = (state=initialState, action) => {
       return Object.assign({}, state, {
           items: itemsUpdated,
       })
+      case TOGGLE_HIDDEN_COLLECTION:
+        const indexItemC = state.searchCollection.findIndex(item => item.cardId === action.cardId);
+        const itemToggleC = state.searchCollection[indexItemC];
+        const itemsUpdatedC = [
+          ...state.searchCollection.slice(0, indexItemC),
+          {
+            ...itemToggleC,
+            hide: !itemToggleC.hide
+          },
+          ...state.searchCollection.slice(indexItemC+1)
+        ]
+        return Object.assign({}, state, {
+            searchCollection: itemsUpdatedC,
+        })
       default:
         return state;
   }
