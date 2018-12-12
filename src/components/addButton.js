@@ -10,7 +10,8 @@ class AddButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        editing: false
+        editing: false,
+        theUser: this.props.theUser
     }
 }
 
@@ -33,12 +34,14 @@ setEditing(editing) {
   }
   return (
         <AddItemForm
-          onClick={() => this.setEditing(false)}/>
+          onClick={() => this.setEditing(false)}
+          user={this.props.theUser} />
     );
   }
 }
 
 const mapStateToProps = state => ({
+  theUser: state.bestow.theUser,
   items: {
     cardId: state.cardId,
     isHidden: state.isHidden,

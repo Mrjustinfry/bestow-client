@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import Item from './item';
 
 import './list.css';
 
-export function List(props) {
+class List extends Component {
+
+  render(props) {
     return (
       <div className="listContainer">
           <ul className="items">
@@ -14,5 +16,11 @@ export function List(props) {
       </div>
     )
 }
+}
 
-export default connect()(List);
+const mapStateToProps = state => ({
+    theUser: state.bestow.theUser,
+    loading: state.bestow.loading
+});
+
+export default connect(mapStateToProps)(List);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import {loginUser} from '../actions/actions';
 
 import Filter from './filter';
 
@@ -9,10 +10,13 @@ import './header.css';
 export class Header extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      name:'Justin'
+      loggedIn: this.props.loggedIn,
+      searchItem: ''
     }
   }
+
 giveGreeting() {
   let today = new Date();
   let now = today.getHours();
@@ -31,20 +35,33 @@ giveGreeting() {
   }
 }
 
-  render() {
+getName() {
+  if(!this.props.theUser) {
+    return localStorage.localUserName;
+  } else if (this.props.theUser) {
+    return this.props.theUser.firstName;
+  }
+}
+
+  render(props) {
     let message = this.giveGreeting();
+    let name = this.getName();
       return (
         <header className="head">
-          <h2 className="greeting">{message} {this.state.name}!</h2>
-          <Filter />
+          <h2 className="greeting">{message} {name}!</h2>
+          <Filter onChange={searchItem => this.setState({searchItem})}  />
         </header>
       );
   }
 }
 
+
+
 const mapStateToProps = (state) => ({
+  theUser: state.bestow.theUser,
+  searchItem: state.searchItem,
   users: state.users,
   filter: state.filter
 });
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, {loginUser})(Header);

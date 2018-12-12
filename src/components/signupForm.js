@@ -1,55 +1,81 @@
 import React, { Component } from 'react';
-import {reduxForm, Field, focus, change, untouch} from 'redux-form';
+import {reduxForm, Field, focus, change, untouch, SubmissionError} from 'redux-form';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import Input from './input';
-import {required, valid} from '../validator';
+import {required, valid, verify, length} from '../validator';
 
-import {addUser} from '../actions/actions';
+import {signupUser} from '../actions/actions';
 
 import './signupForm.css';
 
+const passLength = length({min:5,max:72})
+const verifyPass = verify('password');
+
 class SignupForm extends Component {
-  constructor(props) {
-    super(props);
 
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  onSubmit(e) {
-      e.preventDefault();
+submit = () => {
       const firstName = this.firstName.value.trim();
       const lastName = this.lastName.value.trim();
       const username = this.username.value.trim();
-      const password = this.password.value.trim();;
-      this.props.addUser({
-        firstName: firstName,
-        lastName: lastName,
-        username: username,
-        password: password
-      });
-      let resetInput = (formName, inputsObj) => {
-             Object.keys(inputsObj).forEach(inputKey => {
-                 this.props.dispatch(change(formName, inputKey, inputsObj[inputKey]));
-                 this.props.dispatch(untouch(formName, inputKey));
-             });
-       }
-       resetInput('signup', {
-       firstName: '',
-       lastName: '',
-       username: '',
-       password: '',
-       passwordAgain: ''
-   });
-   this.props.history.push('/');
+      const password = this.password.value.trim();
+      return new Promise((resolve, reject) => {
+        this.props.signupUser({
+          firstName: firstName,
+          lastName: lastName,
+          username: username,
+          password: password
+        }).then(() => resolve()).then(this.props.history.push('/'))
+        .catch(err => {
+            const {code} = err;
+            const message =
+                code === 401
+                    ? 'Something is missing'
+                    : 'Hmm, looks like something went wrong';
+            return reject(
+              new SubmissionError({
+                     _error: message
+                 })
+            )
+        });
+        let resetInput = (formName, inputsObj) => {
+               Object.keys(inputsObj).forEach(inputKey => {
+                   this.props.dispatch(change(formName, inputKey, inputsObj[inputKey]));
+                   this.props.dispatch(untouch(formName, inputKey));
+               });
+         }
+         resetInput('signup', {
+         firstName: '',
+         lastName: '',
+         username: '',
+         password: '',
+         passwordAgain: ''
+     });
+      })
   }
 
-  render() {
+  render(props) {
+    let error;
+    let load;
+      if (this.props.error) {
+          error = (
+              <div className="form-error" aria-live="polite">
+                  {this.props.error}
+              </div>
+          );
+      }
+      if (this.props.loading) {
+        load = (
+          <div className="loading" aria-live="polite">
+            <p>Loading...</p>
+          </div>
+        )
+      }
       return (
           <div className="signupForm suContainer">
             <form
                 className="signupForm"
-                onSubmit={this.onSubmit.bind(this)}>
+                onSubmit={this.props.handleSubmit(this.submit)}>
               <h4 className="suHead">Sign up now!</h4>
               <Field
                   name="firstName"
@@ -87,7 +113,7 @@ class SignupForm extends Component {
                   component={Input}
                   label="Password"
                   display="passIn sfIn"
-                  validate={[required, valid]}
+                  validate={[required, valid, passLength]}
                   ref={input => (this.password = input)}
               />
               <br />
@@ -97,8 +123,9 @@ class SignupForm extends Component {
                   component={Input}
                   label="Verify Password"
                   display="passAgainIn sfIn"
-                  validate={[required, valid]}
+                  validate={[required, valid, verifyPass]}
               />
+              {error}
               <br />
               <button
                     className="signupBtn"
@@ -106,6 +133,7 @@ class SignupForm extends Component {
                     disabled={this.props.pristine || this.props.submitting}>
                     Sign Up
                 </button>
+                {load}
             </form>
           </div>
       );
@@ -113,15 +141,14 @@ class SignupForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  users: {
-    firstName: state.firstName,
-    lastName: state.lastName,
-    username: state.username,
-    password: state.password
- }
-})
+    loggedIn: state.bestow.loggedIn,
+    theUser: state.bestow.theUser,
+    items: state.bestow.items,
+    hasAuthToken: state.authToken !== null,
+    loading: state.bestow.loading
+});
 
-const SignupFormConnected = connect(mapStateToProps, {addUser})(SignupForm)
+const SignupFormConnected = connect(mapStateToProps, {signupUser})(SignupForm)
 
 export default withRouter(reduxForm({
     form: 'signup',

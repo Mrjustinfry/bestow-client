@@ -20,9 +20,10 @@
   margin: 1%;
   background-color: #f3d1f48f;
   text-align: center;
+  width: 95%;
 }
 
-@media only screen and (max-width: 780px) {
+@media only screen and (max-width: 400px) {
   .logo {
     height: 85%;
     width: 85%
