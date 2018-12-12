@@ -36,6 +36,7 @@ export const addItem = (item, callback) =>(dispatch, getState) => {
         Authorization: `Bearer ${authToken}`
       }
     })
+        .then(item => dispatch(editItemSuccess(item)))
         .then(res => modifyError(res))
         .then(res => {
             if (!res.ok) {
@@ -43,7 +44,7 @@ export const addItem = (item, callback) =>(dispatch, getState) => {
             }
             return res.json();
         })
-        .then(item => callback(item))
+        //.then(item => callback(item))
         .then(dispatch(getItems()))
         .catch(error => addItemError(error));
 }
@@ -130,13 +131,13 @@ export const editItem = (item, callback) =>(dispatch, getState) => {
       }
     })
         .then(res => modifyError(res))
-        .then(res => {
+        .catch(res => {
             if (!res.ok) {
                 return Promise.reject(res.statusText);
             }
             return res.json();
         })
-        .then(item => callback(item))
+        .then(dispatch(editItemSuccess(item)))
         .then(dispatch(getItems()))
         .catch(error => editItemError(error));
 }
@@ -268,6 +269,7 @@ export const deleteUser = (userId) => (dispatch, getState) => {
                 );
             })
             .then(dispatch(deleteUserSuccess(userId)))
+            .then(({authToken}) => removeAuthToken(authToken, dispatch))
             .catch(err => console.log(err))
     );
 };

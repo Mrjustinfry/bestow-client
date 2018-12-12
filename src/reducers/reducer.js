@@ -99,6 +99,7 @@ export const itemReducer = (state=initialState, action) => {
     case ADD_ITEM_SUCCESS:
         return Object.assign({}, state, {
         items: [...state.items],
+        searchCollection: [...state.items],
         loading: false
       });
     case GET_ITEMS_SUCCESS:
@@ -113,8 +114,17 @@ export const itemReducer = (state=initialState, action) => {
       })
     case EDIT_ITEM_SUCCESS:
       const editItems = state.items.filter(item => item.cardId !== action.item.cardId);
+      //const editItemsC = state.searchCollection.filter(item => item.cardId !== action.item.cardId);
       return Object.assign({}, state, {
           items: [...editItems, {
+            cardId: action.item.cardId,
+            hide: action.item.hide,
+            who: action.item.who,
+            what: action.item.what,
+            when: action.item.when,
+            how: action.item.how
+          }],
+          searchCollection: [...editItems, {
             cardId: action.item.cardId,
             hide: action.item.hide,
             who: action.item.who,
@@ -128,6 +138,7 @@ export const itemReducer = (state=initialState, action) => {
       const items = state.items.filter(item => item.cardId !== action.cardId);
           return Object.assign({}, state, {
             items: [...items],
+            searchCollection: [...items],
             loading: false
         });
 
@@ -145,7 +156,9 @@ export const itemReducer = (state=initialState, action) => {
       const users = state.users.filter(user => user.userId !== action.user);
         return Object.assign({}, state, {
           users: [...users],
-          loading: false
+          loading: false,
+          hasAuthToken: false,
+          theUser: null
         });
 
         // OTHER REDUCERS //

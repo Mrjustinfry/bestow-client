@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 import Input from './input';
 import {required, valid} from '../validator';
-import {editItem} from '../actions/actions';
+import {editItem, getItems} from '../actions/actions';
 
 import './card.css';
 
@@ -14,7 +14,7 @@ class EditItemForm extends Component {
     this.state = {
       items: this.props.items,
       theUser: this.props.theUser,
-      editing: true,
+      editing: ''
     }
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -103,18 +103,16 @@ class EditItemForm extends Component {
   }
 }
 
+EditItemForm.defaultProps = {
+  editing: true
+}
+
 const mapStateToProps = state => ({
-  items: {
-    cardId: state.cardId,
-    hide: state.hide,
-    who: state.who,
-    what: state.what,
-    when: state.when,
-    how: state.how
-  }
+    items: state.bestow.items,
+    searchCollection: state.bestow.searchCollection
 });
 
-const EditItemFormConnected = connect(mapStateToProps, {editItem})(EditItemForm)
+const EditItemFormConnected = connect(mapStateToProps, {editItem, getItems})(EditItemForm)
 
 export default reduxForm({
     form: 'editItem',
