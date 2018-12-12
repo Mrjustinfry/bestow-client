@@ -7,7 +7,7 @@ import {deleteUser} from '../actions/actions';
 import './deleteUser.css';
 
 export class DeleteUser extends Component {
-  
+
   deleteTheUser(props) {
     this.props.deleteUser(localStorage.localUserId);
     this.props.history.push('/');

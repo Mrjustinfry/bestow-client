@@ -5,7 +5,7 @@ import Landing from './landing';
 import NoItems from './noItems';
 import CardItem from './cardItem';
 
-import {addItem, toggleHidden, toggleHiddenCollection, getItems, getUserItems, filterItems} from '../actions/actions';
+import {addItem, toggleHidden, toggleHiddenCollection, getItems, getUserItems} from '../actions/actions';
 
 import './list.css';
 import './card.css'
@@ -59,7 +59,7 @@ class Item extends Component {
             key={index}
             item={item}
             itemClassName={item.how}
-            itemDefinition={item[this.props.filter].replace('T00:00:00.000Z', '')} />
+            itemDefinition={item[this.props.filter]} />
         ))
     } else if (this.props.items.length > 0) {
         return this.props.items.map((item, index) => (
@@ -69,7 +69,7 @@ class Item extends Component {
             key={index}
             item={item}
             itemClassName={item.how}
-            itemDefinition={item[this.props.filter].replace('T00:00:00.000Z', '')} />
+            itemDefinition={item[this.props.filter]} />
         ))
     }
 }};
