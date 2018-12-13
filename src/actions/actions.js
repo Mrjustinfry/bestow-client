@@ -171,6 +171,8 @@ export const deleteItem = (cardId) => (dispatch, getState) => {
             },
             body: JSON.stringify(cardId)
         })
+            .then(dispatch(deleteItemSuccess(cardId)))
+            .then(dispatch(getItems()))
             .then(res => modifyError(res))
             .catch(err => {
                 const {code} = err;
@@ -185,8 +187,6 @@ export const deleteItem = (cardId) => (dispatch, getState) => {
                     })
                 );
             })
-            .then(dispatch(deleteItemSuccess(cardId)))
-            .then(dispatch(getItems()))
             .catch(error => deleteItemError(error))
     );
 };
