@@ -66,6 +66,7 @@ class App extends Component {
 const mapStateToProps = state => ({
     users: state.bestow.users,
     items: state.bestow.items,
+    searchCollection: state.bestow.searchCollection,
     theUser: state.bestow.theUser,
     hasAuthToken: state.authToken !== null,
 });

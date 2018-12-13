@@ -137,10 +137,9 @@ export const itemReducer = (state=initialState, action) => {
       });
     case DELETE_ITEM_SUCCESS:
       const items = state.items.filter(item => item.cardId !== action.cardId);
-      const itemsS = state.searchCollection.filter(item => item.cardId !== action.cardId);
           return Object.assign({}, state, {
             items: [...items],
-            searchCollection: [...itemsS],
+            searchCollection: [...items],
             loading: false
         });
 
