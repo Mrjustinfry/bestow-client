@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import moment from 'moment';
 
 import {deleteItem} from '../actions/actions';
 
@@ -23,22 +24,6 @@ constructor(props) {
       this.setState({
           editing
       });
-}
-
- timeLapse() {//date difference function
-    let date1 = new Date(this.props.when);
-    let date2 = new Date();
-    let timeDiff = Math.abs(date2.getTime() - date1.getTime());
-    let diffDays = Math.floor(timeDiff / (1000 * 3600 * 24));
-    if(date2 >= date1){
-      if(diffDays > 1){
-        return 'about ' + diffDays + ' days ago';
-      } else if(diffDays === 1){
-        return ' yesterday';
-      }
-    }else if (date2 < date1){
-    return 'in the future';
-  }
 }
 
 deleteUserItem() {
@@ -67,8 +52,8 @@ componentDidUpdate(prevProps) {
           </span>
           <p className="whatItem">{this.props.what}</p>
           <p className="whoItem">{this.props.who}</p>
-          <p className="whenItem">{this.props.when.replace('T00:00:00.000Z', '')}</p>
-          <p className="howLong">  - ({this.props.how + ' ' + this.timeLapse()}) -</p>
+          <p className="whenItem">{moment(this.props.when).format("MMM Do YYYY")}</p>
+          <p className="howLong">  - ({this.props.how + ' ' + moment(this.props.when, "YYYYMMDD").fromNow()}) -</p>
         </div>
       );
   }

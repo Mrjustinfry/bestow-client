@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import moment from 'moment'
 
 import Landing from './landing';
 import NoItems from './noItems';
@@ -59,7 +60,7 @@ class Item extends Component {
             key={index}
             item={item}
             itemClassName={item.how}
-            itemDefinition={item[this.props.filter]} />
+            itemDefinition={item[this.props.filter].replace('T00:00:00.000Z', '')} />
         ))
     } else if (this.props.items.length > 0) {
         return this.props.items.map((item, index) => (
@@ -69,7 +70,7 @@ class Item extends Component {
             key={index}
             item={item}
             itemClassName={item.how}
-            itemDefinition={item[this.props.filter]} />
+            itemDefinition={item[this.props.filter].replace('T00:00:00.000Z', '')} />
         ))
     }
 }};
