@@ -29,7 +29,6 @@ onChange(searchItem) {
     return this.props.filterItems(searchItem.toLowerCase())
 }
 
-
 toggleHidden () {
   this.setState({
     visible: !this.state.visible
@@ -91,11 +90,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, {setFilter, getUserItems, filterItems})(Filter);
-
-
-/*
-const listItems = this.props.items.filter(item =>
-  item.what.toLowerCase().includes(
-      this.state.searchItem.toLowerCase()
-));
-*/

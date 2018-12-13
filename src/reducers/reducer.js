@@ -110,7 +110,8 @@ export const itemReducer = (state=initialState, action) => {
     case GET_USER_ITEMS:
       const userItems = state.items.filter(item => item.user._id === action.userId);
       return Object.assign({}, state, {
-            items: [...userItems]
+            items: [...userItems],
+            searchCollection: [...userItems]
       })
     case EDIT_ITEM_SUCCESS:
       const editItems = state.items.filter(item => item.cardId !== action.item.cardId);
@@ -136,9 +137,10 @@ export const itemReducer = (state=initialState, action) => {
       });
     case DELETE_ITEM_SUCCESS:
       const items = state.items.filter(item => item.cardId !== action.cardId);
+      const itemsS = state.searchCollection.filter(item => item.cardId !== action.cardId);
           return Object.assign({}, state, {
             items: [...items],
-            searchCollection: [...items],
+            searchCollection: [...itemsS],
             loading: false
         });
 

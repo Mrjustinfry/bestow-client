@@ -43,6 +43,7 @@ onSubmit(e) {
       when: when,
       how: how
     });
+    this.props.getItems();
    let resetInput = (formName, inputsObj) => {
           Object.keys(inputsObj).forEach(inputKey => {
               this.props.dispatch(change(formName, inputKey, inputsObj[inputKey]));
@@ -55,7 +56,6 @@ onSubmit(e) {
     when: ''
 });
     this.setEditing(!this.state.editing);
-    this.props.getItems();
 }
 
 
