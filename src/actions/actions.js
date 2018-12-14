@@ -41,8 +41,8 @@ export const addItem = (item, callback) =>(dispatch, getState) => {
             if (!res.ok) {
                 return Promise.reject(res.statusText);
             }
-            dispatch(getItems())
             dispatch(addItemSuccess(item))
+            //dispatch(getItems())
             return res.json();
         })
         .catch(error => addItemError(error));
@@ -203,6 +203,7 @@ export const addUserError = user => ({
 });
 
 export const signupUser = user => dispatch => {
+  dispatch(addUserReq());
     return fetch(`${API_BASE_URL}/users`, {
         method: 'POST',
         headers: {
@@ -212,6 +213,7 @@ export const signupUser = user => dispatch => {
     })
         .then(res => modifyError(res))
         .then(res => res.json())
+        .then(dispatch(addUserSuccess(user)))
 };
 
 //DELETE request //

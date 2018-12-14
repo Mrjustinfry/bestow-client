@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import moment from 'moment'
 
 import Landing from './landing';
 import NoItems from './noItems';

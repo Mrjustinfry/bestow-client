@@ -2,7 +2,7 @@ import {
         ADD_ITEM_SUCCESS,
         EDIT_ITEM_REQ, EDIT_ITEM_SUCCESS,
         DELETE_ITEM_SUCCESS,
-        ADD_USER_SUCCESS,
+        ADD_USER_REQ, ADD_USER_ERROR, ADD_USER_SUCCESS,
         DELETE_USER_SUCCESS,
         GET_AUTH_TOKEN, DELETE_AUTH_TOKEN,
         AUTH_TOKEN_REQ, AUTH_TOKEN_SUCCESS, AUTH_TOKEN_ERROR,
@@ -91,7 +91,7 @@ export const itemReducer = (state=initialState, action) => {
         });
 
         // ITEM REDUCERS //
-    case GET_ITEMS_REQ || EDIT_ITEM_REQ:
+    case GET_ITEMS_REQ || EDIT_ITEM_REQ || ADD_USER_REQ:
       return Object.assign({}, state, {
             loading: true,
             error: null
@@ -144,15 +144,23 @@ export const itemReducer = (state=initialState, action) => {
         });
 
         // USER REDUCERS //
-    case ADD_USER_SUCCESS://Duplicate????
+    case ADD_USER_SUCCESS:
       return Object.assign({}, state, {
         users: [...state.users, {
             firstName: action.user.firstName,
             lastName: action.user.lastName,
             username: action.user.username,
             password: action.user.password
-        }]
+        }],
+        loading: false
       });
+
+    case ADD_USER_ERROR:
+      return Object.assign({}, state, {
+        loading: false,
+        error: action.error
+    })
+
     case DELETE_USER_SUCCESS:
       const users = state.users.filter(user => user.userId !== action.user);
         return Object.assign({}, state, {

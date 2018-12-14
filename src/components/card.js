@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import moment from 'moment';
 
-import {deleteItem} from '../actions/actions';
+import {deleteItem, getItems} from '../actions/actions';
 
 import EditItemForm from './editItemForm';
 
@@ -28,6 +28,7 @@ constructor(props) {
 
 deleteUserItem() {
   this.props.deleteItem(this.props.cardId);
+  this.props.getItems();
 }
 
 componentDidUpdate(prevProps) {
@@ -68,4 +69,4 @@ componentDidUpdate(prevProps) {
 }
 
 
-export default connect(null, { deleteItem })(Card);
+export default connect(null, { deleteItem, getItems })(Card);

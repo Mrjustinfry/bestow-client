@@ -13,6 +13,13 @@ const passLength = length({min:5,max:72})
 const verifyPass = verify('password');
 
 class SignupForm extends Component {
+constructor(props) {
+  super(props);
+  this.state = {
+    signedUp: false
+  }
+}
+
 
 submit = () => {
       const firstName = this.firstName.value.trim();
@@ -25,19 +32,20 @@ submit = () => {
           lastName: lastName,
           username: username,
           password: password
-        }).then(() => resolve()).then(this.props.history.push('/'))
+        })
         .catch(err => {
             const {code} = err;
             const message =
                 code === 401
                     ? 'Something is missing'
-                    : 'Hmm, looks like something went wrong';
+                    : 'It seems someone already has that username';
             return reject(
               new SubmissionError({
                      _error: message
                  })
             )
-        });
+        })
+        .then(() => resolve());
         let resetInput = (formName, inputsObj) => {
                Object.keys(inputsObj).forEach(inputKey => {
                    this.props.dispatch(change(formName, inputKey, inputsObj[inputKey]));
