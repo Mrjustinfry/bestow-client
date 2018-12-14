@@ -36,13 +36,13 @@ export const addItem = (item, callback) =>(dispatch, getState) => {
         Authorization: `Bearer ${authToken}`
       }
     })
-        .then(dispatch(getItems()))
-        .then(dispatch(addItemSuccess(item)))
         .then(res => modifyError(res))
         .catch(res => {
             if (!res.ok) {
                 return Promise.reject(res.statusText);
             }
+            dispatch(getItems())
+            dispatch(addItemSuccess(item))
             return res.json();
         })
         .catch(error => addItemError(error));
@@ -136,8 +136,8 @@ export const editItem = (item, callback) =>(dispatch, getState) => {
             }
             return res.json();
         })
-        .then(dispatch(editItemSuccess(item)))
-        .then(dispatch(getItems()))
+        dispatch(editItemSuccess(item))
+        dispatch(getItems())
         .catch(error => editItemError(error));
 }
 
@@ -163,7 +163,6 @@ export const deleteItemError = item => ({
 export const deleteItem = (cardId) => (dispatch, getState) => {
     dispatch(deleteItemReq(cardId));
     const authToken = getState().bestow.authToken;
-    return (
         fetch(`${API_BASE_URL}/items/${cardId}`, {
             method: 'DELETE',
             headers: {
@@ -171,24 +170,16 @@ export const deleteItem = (cardId) => (dispatch, getState) => {
             },
             body: JSON.stringify(cardId)
         })
-            .then(dispatch(deleteItemSuccess(cardId)))
-            .then(dispatch(getItems()))
-            .then(res => modifyError(res))
-            .catch(err => {
-                const {code} = err;
-                const message =
-                    code === 401
-                        ? 'Something went wrong'
-                        : 'Unable to delete item';
-                dispatch(deleteItemError(err));
-                return Promise.reject(
-                    new SubmissionError({
-                        err: message
-                    })
-                );
-            })
+        .then(res => modifyError(res))
+        .catch(res => {
+            if (!res.ok) {
+                return Promise.reject(res.statusText);
+            }
+            return res.json();
+        })
+            dispatch(deleteItemSuccess(cardId))
+            dispatch(getItems())
             .catch(error => deleteItemError(error))
-    );
 };
 
 //User actions//
