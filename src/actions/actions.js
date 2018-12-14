@@ -41,7 +41,7 @@ export const addItem = (item, callback) =>(dispatch, getState) => {
             if (!res.ok) {
                 return Promise.reject(res.statusText);
             }
-            dispatch(getItems())
+            //dispatch(getItems())
             dispatch(addItemSuccess(item))
             return res.json();
         })
