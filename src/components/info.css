@@ -41,7 +41,7 @@
 }
 
 .infoSignupBox {
-  flex: 1;
+  flex-grow: 1;
   border-radius: 1em;
   padding: 3%;
   margin: 1%;

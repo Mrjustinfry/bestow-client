@@ -46,3 +46,23 @@
   cursor: pointer;
   background-color: #f49ef8;
 }
+
+.thankYou {
+  background-color: mintcream;
+  border: 1px solid mintcream;
+  border-radius: inherit;
+  height: 20em;
+  margin: 3em auto;
+  padding: 1em;
+}
+
+.tyMsg {
+  margin: 4em auto;
+  font-weight: bold;
+}
+
+.tyLink {
+  background-color: #92d9fa;
+  border-radius: inherit;
+  padding: 1em;
+}

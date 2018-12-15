@@ -8,4 +8,5 @@ describe('<AddButton />', () => {
     it('Renders without crashing', () => {
         shallow(<AddButton store={store} />);
     });
+
   });

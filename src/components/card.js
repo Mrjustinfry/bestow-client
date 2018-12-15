@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import moment from 'moment';
 
-import {deleteItem, getItems} from '../actions/actions';
+import {deleteItem, getUserItems} from '../actions/actions';
 
 import EditItemForm from './editItemForm';
 
@@ -27,14 +27,8 @@ constructor(props) {
 }
 
 deleteUserItem() {
-  this.props.deleteItem(this.props.cardId);
-  this.props.getItems();
-}
-
-componentDidUpdate(prevProps) {
-  if(prevProps !== this.props) {
-    console.log(this.props);
-  }
+  this.props.deleteItem(this.props.cardId)
+  return this.props.getUserItems(localStorage.localUserId);
 }
 
   render() {
@@ -53,7 +47,7 @@ componentDidUpdate(prevProps) {
           </span>
           <p className="whatItem">{this.props.what}</p>
           <p className="whoItem">{this.props.who}</p>
-          <p className="whenItem">{moment(this.props.when).format("MMM Do YYYY")}</p>
+          <p className="whenItem">{moment(this.props.when).format("MMMM Do YYYY")}</p>
           <p className="howLong">  - ({this.props.how + ' ' + moment(this.props.when, "YYYYMMDD").fromNow()}) -</p>
         </div>
       );
@@ -69,4 +63,4 @@ componentDidUpdate(prevProps) {
 }
 
 
-export default connect(null, { deleteItem, getItems })(Card);
+export default connect(null, { deleteItem, getUserItems })(Card);

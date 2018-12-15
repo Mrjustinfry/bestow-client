@@ -41,11 +41,10 @@ export const addItem = (item, callback) =>(dispatch, getState) => {
             if (!res.ok) {
                 return Promise.reject(res.statusText);
             }
-            //dispatch(getItems())
-            dispatch(addItemSuccess(item))
             return res.json();
         })
-        .catch(error => addItemError(error));
+        dispatch(getItems())
+        dispatch(addItemSuccess(item))
 }
 
 //GET request //
@@ -136,9 +135,8 @@ export const editItem = (item, callback) =>(dispatch, getState) => {
             }
             return res.json();
         })
-        dispatch(editItemSuccess(item))
         dispatch(getItems())
-        .catch(error => editItemError(error));
+        dispatch(editItemSuccess(item))
 }
 
 //DELETE request //
@@ -171,6 +169,7 @@ export const deleteItem = (cardId) => (dispatch, getState) => {
             body: JSON.stringify(cardId)
         })
         .then(res => modifyError(res))
+        .then(dispatch(getItems()))
         .catch(res => {
             if (!res.ok) {
                 return Promise.reject(res.statusText);
@@ -178,8 +177,6 @@ export const deleteItem = (cardId) => (dispatch, getState) => {
             return res.json();
         })
             dispatch(deleteItemSuccess(cardId))
-            dispatch(getItems())
-            .catch(error => deleteItemError(error))
 };
 
 //User actions//
@@ -202,7 +199,14 @@ export const addUserError = user => ({
   user
 });
 
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
+export const signupSuccess = user => ({
+  type: SIGNUP_SUCCESS,
+  user
+});
+
 export const signupUser = user => dispatch => {
+  dispatch(addUserReq());
     return fetch(`${API_BASE_URL}/users`, {
         method: 'POST',
         headers: {
@@ -212,6 +216,7 @@ export const signupUser = user => dispatch => {
     })
         .then(res => modifyError(res))
         .then(res => res.json())
+        .then(dispatch(addUserSuccess(user)));
 };
 
 //DELETE request //
