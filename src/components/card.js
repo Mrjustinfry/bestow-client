@@ -47,7 +47,7 @@ deleteUserItem() {
           </span>
           <p className="whatItem">{this.props.what}</p>
           <p className="whoItem">{this.props.who}</p>
-          <p className="whenItem">{moment(this.props.when).format("MMMM Do YYYY")}</p>
+          <p className="whenItem">{moment.utc(this.props.when).format("MMMM Do YYYY")}</p>
           <p className="howLong">  - ({this.props.how + ' ' + moment(this.props.when, "YYYYMMDD").fromNow()}) -</p>
         </div>
       );

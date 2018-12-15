@@ -169,13 +169,14 @@ export const deleteItem = (cardId) => (dispatch, getState) => {
             body: JSON.stringify(cardId)
         })
         .then(res => modifyError(res))
-        .then(dispatch(getItems()))
+        //.then(dispatch(getItems()))
         .catch(res => {
             if (!res.ok) {
                 return Promise.reject(res.statusText);
             }
             return res.json();
         })
+            //dispatch(getItems())
             dispatch(deleteItemSuccess(cardId))
 };
 
