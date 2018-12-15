@@ -40,6 +40,7 @@ class EditItemForm extends Component {
         when: when,
         how: how
       });
+      this.props.getItems();
       this.setEditing(!this.state.editing)
   }
 

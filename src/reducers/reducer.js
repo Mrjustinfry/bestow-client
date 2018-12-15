@@ -4,7 +4,7 @@ import {
         DELETE_ITEM_SUCCESS,
         ADD_USER_REQ, ADD_USER_ERROR, ADD_USER_SUCCESS,
         DELETE_USER_SUCCESS,
-        GET_AUTH_TOKEN, DELETE_AUTH_TOKEN,
+        GET_AUTH_TOKEN, DELETE_AUTH_TOKEN, SIGNUP_SUCCESS,
         AUTH_TOKEN_REQ, AUTH_TOKEN_SUCCESS, AUTH_TOKEN_ERROR,
         GET_ITEMS_REQ, GET_ITEMS_SUCCESS, GET_USER_ITEMS,
         TOGGLE_HIDDEN, TOGGLE_HIDDEN_COLLECTION, SET_FILTER, FILTER_ITEMS
@@ -17,6 +17,7 @@ const initialState = {
   error: null,
   loggedIn: '',
   searchItem: '',
+  signIn: false,
   users: [],
   searchCollection: [],
   items: [
@@ -105,6 +106,7 @@ export const itemReducer = (state=initialState, action) => {
     case GET_ITEMS_SUCCESS:
       return Object.assign({}, state, {
         items: action.items,
+        searchCollection: action.items,
         loading: false
       });
     case GET_USER_ITEMS:
@@ -115,7 +117,7 @@ export const itemReducer = (state=initialState, action) => {
       })
     case EDIT_ITEM_SUCCESS:
       const editItems = state.items.filter(item => item.cardId !== action.item.cardId);
-      //const editItemsC = state.searchCollection.filter(item => item.cardId !== action.item.cardId);
+      const editItemsC = state.searchCollection.filter(item => item.cardId !== action.item.cardId);
       return Object.assign({}, state, {
           items: [...editItems, {
             cardId: action.item.cardId,
@@ -125,7 +127,7 @@ export const itemReducer = (state=initialState, action) => {
             when: action.item.when,
             how: action.item.how
           }],
-          searchCollection: [...editItems, {
+          searchCollection: [...editItemsC, {
             cardId: action.item.cardId,
             hide: action.item.hide,
             who: action.item.who,
@@ -137,6 +139,7 @@ export const itemReducer = (state=initialState, action) => {
       });
     case DELETE_ITEM_SUCCESS:
       const items = state.items.filter(item => item.cardId !== action.cardId);
+      //const itemsC = state.searchCollection.filter(item => item.cardId !== action.cardId);
           return Object.assign({}, state, {
             items: [...items],
             searchCollection: [...items],
@@ -152,8 +155,13 @@ export const itemReducer = (state=initialState, action) => {
             username: action.user.username,
             password: action.user.password
         }],
-        loading: false
       });
+
+    case SIGNUP_SUCCESS:
+      return Object.assign({}, state, {
+        loading: false,
+        signIn: true
+      })
 
     case ADD_USER_ERROR:
       return Object.assign({}, state, {

@@ -5,7 +5,9 @@ import {withRouter} from 'react-router-dom';
 import Input from './input';
 import {required, valid, verify, length} from '../validator';
 
-import {signupUser} from '../actions/actions';
+import {signupUser, signupSuccess} from '../actions/actions';
+
+import Ty from './ty';
 
 import './signupForm.css';
 
@@ -38,14 +40,20 @@ submit = () => {
             const message =
                 code === 401
                     ? 'Something is missing'
-                    : 'It seems someone already has that username';
+                    : err.message;
             return reject(
               new SubmissionError({
                      _error: message
                  })
             )
         })
-        .then(() => resolve());
+        .then(user => {
+            if(user !== undefined) {
+              return resolve(
+                this.props.signupSuccess()
+              )
+            }
+        })
         let resetInput = (formName, inputsObj) => {
                Object.keys(inputsObj).forEach(inputKey => {
                    this.props.dispatch(change(formName, inputKey, inputsObj[inputKey]));
@@ -77,6 +85,11 @@ submit = () => {
           <div className="loading" aria-live="polite">
             <p>Loading...</p>
           </div>
+        )
+      }
+      if (this.props.signIn) {
+        return (
+          <Ty />
         )
       }
       return (
@@ -148,15 +161,20 @@ submit = () => {
   }
 }
 
+SignupForm.defaultProps = ({
+  signIn: false
+})
+
 const mapStateToProps = state => ({
     loggedIn: state.bestow.loggedIn,
     theUser: state.bestow.theUser,
+    signIn: state.bestow.signIn,
     items: state.bestow.items,
     hasAuthToken: state.authToken !== null,
     loading: state.bestow.loading
 });
 
-const SignupFormConnected = connect(mapStateToProps, {signupUser})(SignupForm)
+const SignupFormConnected = connect(mapStateToProps, {signupUser, signupSuccess})(SignupForm)
 
 export default withRouter(reduxForm({
     form: 'signup',
