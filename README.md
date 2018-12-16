@@ -40,21 +40,22 @@ Demo Info:
 ![Demo Info](/public/screenshots/demo.png "Demo Info")
 
 
-### Technologies
+ Technologies
+--------------
 
-## Client
+### Client
 * React
 * Redux
 * CSS
 
-## API
+### API
 * Express
 * Mongoose
 * MongoDB
 * Passport
 * Bcrypt
 
-## Testing
+### Testing
 * Mocha
 * Chai
 * Enzyme
