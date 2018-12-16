@@ -18,25 +18,25 @@ also a search feature if you're looking for something specific.
 ### Screenshots
 
 Landing Page:
-![Landing Page](/public/screenshots/landing.jpg "Landing Page")
+![Landing Page](./public/screenshots/landing.jpg "Landing Page")
 
 List view:
-![List View](/public/screenshots/list.jpg "List View")
+![List View](./public/screenshots/list.jpg "List View")
 
 Card View:
-![Card View](/public/screenshots/card.jpg "Card View")
+![Card View](./public/screenshots/card.jpg "Card View")
 
 Info Page:
-![Info Page](/public/screenshots/info.jpg "Info Page")
+![Info Page](./public/screenshots/info.jpg "Info Page")
 
 Add item:
-![Add Item](/public/screenshots/additem.jpg "Add item")
+![Add Item](./public/screenshots/additem.jpg "Add item")
 
 Sign up:
-![Sign up](/public/screenshots/signup.jpg "Sign up")
+![Sign up](./public/screenshots/signup.jpg "Sign up")
 
 Demo Info:
-![Demo Info](/public/screenshots/demo.jpg "Demo Info")
+![Demo Info](./public/screenshots/demo.jpg "Demo Info")
 
 ### Technologies
 
