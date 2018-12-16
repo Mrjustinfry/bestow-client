@@ -6,7 +6,7 @@
 
 # Demo credentials
 * username: demo
-* password: demmopass
+* password: demopass
 
 ### Description
 
