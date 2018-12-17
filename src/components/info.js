@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Demo from './demo';
 import SignupForm from './signupForm';
 
 import './signupForm.css';
@@ -37,12 +38,12 @@ export default function Info() {
                     to <img src="./edit.png" alt="edit icon" className="infoIcon" /> edit the information
                     or <img src="./trash.png" alt="trash icon" className="infoIcon" /> remove the item once it has returned to it's rightful owner.
                     </p>
+                    <Demo />
               </div>
               <div className="infoSignupBox">
                 <h3 className="questionSignup">How do I get started?</h3>
                   <p><span id='signup'>That's easy! Just sign up!</span></p>
-                    <SignupForm
-                      />
+                    <SignupForm />
               </div>
               <footer className="infoFoot">&#169; <span className="me">Mr.Justin(Fry);</span> 2018<br />
               <a href="https://github.com/Mrjustinfry" target="_blank" rel="noopener noreferrer"><img src='./github.png' alt='github' className="contact" /></a>

@@ -62,7 +62,7 @@ onSubmit(e) {
   render(props) {
     if (this.state.editing) {
       return (
-        <form className="itemForm">
+        <form className="itemForm" aria-live="polite">
           <p className="close" onClick={this.props.onClick}>close</p>
           <Field
               name="what"

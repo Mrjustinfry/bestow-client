@@ -31,7 +31,7 @@ class Landing extends Component {
       }
     return (
             <div className="app">
-                <img src="/bestowL.png" alt="logo" className="logo" />
+                <img src="/bestowL.png" alt="bestow" className="logo" />
                 <LoginForm />
                 <Footer />
             </div>

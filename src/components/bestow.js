@@ -15,7 +15,7 @@ class Bestow extends Component {
     );
     }
       return (
-          <div className="bestow">
+          <div className="bestow" aria-live="polite">
             <Header />
             <List />
             <AddButton />

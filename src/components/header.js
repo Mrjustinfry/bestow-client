@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {loginUser} from '../actions/actions';
 
 import Filter from './filter';
 
@@ -64,4 +63,4 @@ const mapStateToProps = (state) => ({
   filter: state.filter
 });
 
-export default connect(mapStateToProps, {loginUser})(Header);
+export default connect(mapStateToProps)(Header);

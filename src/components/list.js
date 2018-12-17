@@ -7,7 +7,7 @@ import './list.css';
 
 class List extends Component {
 
-  render(props) {
+  render() {
     return (
       <div className="listContainer">
           <ul className="items">
@@ -18,9 +18,4 @@ class List extends Component {
 }
 }
 
-const mapStateToProps = state => ({
-    theUser: state.bestow.theUser,
-    loading: state.bestow.loading
-});
-
-export default connect(mapStateToProps)(List);
+export default connect()(List);

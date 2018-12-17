@@ -15,7 +15,6 @@ constructor(props) {
     visible: false
   }
 this.setFilter = this.setFilter.bind(this);
-//this.onChange = this.onChange.bind(this);
 this.toggleHidden = this.toggleHidden.bind(this);
 }
 
@@ -43,6 +42,7 @@ toggleHidden () {
               <img
                 src="/who.png"
                 value="who"
+                role="button"
                 alt="who"
                 className="icons"
                 onClick={() => this.setFilter("who")} /></li>
@@ -50,6 +50,7 @@ toggleHidden () {
               <img
                 src="/what.png"
                 value="what"
+                role="button"
                 alt="what"
                 className="icons"
                 onClick={() => this.setFilter("what")} /></li>
@@ -57,6 +58,7 @@ toggleHidden () {
               <img
                 src="/when.png"
                 value="when"
+                role="button"
                 alt="when"
                 className="icons"
                 onClick={() => this.setFilter("when")} /></li>
@@ -73,6 +75,7 @@ toggleHidden () {
           <img
             src="/menu.png"
             alt="menu"
+            role="button"
             className="optionsBtn"
             onClick={this.toggleHidden} />
               {this.state.visible && <Options />}
