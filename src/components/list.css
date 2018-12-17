@@ -67,7 +67,7 @@ img {
 .whatItem {
   background-image: url('/what.png');
   background-repeat: no-repeat;
-  background-color: #f5fffa66;
+  background-color: rgba(245, 255, 250, 0.4);
   border-radius: 3em;
   width: auto;
   padding: .5em;
@@ -79,7 +79,7 @@ img {
 .whoItem {
   background-image: url('/who.png');
   background-repeat: no-repeat;
-  background-color: #f5fffa66;
+  background-color: rgba(245, 255, 250, 0.4);
   border-radius: 3em;
   width: auto;
   padding: .5em;
@@ -94,7 +94,7 @@ img {
   background-position-x: 0.5em;
   background-repeat: no-repeat;
   background-position-y: .3em;
-  background-color: #f5fffa66;
+  background-color: rgba(245, 255, 250, 0.4);
   border-radius: 3em;
   width: auto;
   padding: .5em;

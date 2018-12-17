@@ -12,8 +12,6 @@ class EditItemForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: this.props.items,
-      theUser: this.props.theUser,
       editing: ''
     }
     this.onSubmit = this.onSubmit.bind(this);

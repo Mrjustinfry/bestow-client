@@ -11,7 +11,6 @@ export class Header extends Component {
     super(props);
 
     this.state = {
-      loggedIn: this.props.loggedIn,
       searchItem: ''
     }
   }

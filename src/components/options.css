@@ -9,6 +9,9 @@
   border-left: 1px solid #f66cfb;
   border-bottom: 1px solid #f66cfb;
   border-bottom-left-radius: 2em;
+  animation-name: menuPop;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in;
 }
 
 .optionsClose {
@@ -61,5 +64,15 @@
 @media only screen and (max-width: 780px) {
   .optionsBox {
     font-size: small;
+  }
+}
+
+
+@keyframes menuPop {
+  0% {
+    right: -12em;
+  }
+  100% {
+    right: 0;
   }
 }
