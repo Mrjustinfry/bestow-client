@@ -43,16 +43,16 @@
 
 .formLoad {
   animation-name: loading;
-  animation-timing-fuction: ease-in-out;
-  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-duration: 1s;
   animation-iteration-count: infinite;
 }
 
 @keyframes loading {
-  from {
-    font-size: initial;
+  0%, 100% {
+    transform: rotate(0deg);
   }
-  to {
-    font-size: large;
+  50% {
+    transform: rotate(3deg);
   }
 }
