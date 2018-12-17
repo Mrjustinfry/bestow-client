@@ -34,12 +34,12 @@ logOut() {
   render(props) {
     if(this.state.visible === true) {
     return (
-      <ul className="optionsBox">
-        <li><p className="optionsClose" onClick={this.toggleHidden}>close</p></li>
-        <li className="logoutBtn" onClick={this.logOut}>log out</li>
-        <li className="infoBtn"><Link to="/info" style={{textDecoration:'none',color:'black'}}>info</Link></li>
-        <li className="contactBtn"><a href="mailto:mrjustinfry@gmail.com" style={{textDecoration:'none',color:'black'}}>contact</a></li>
-        <li className="deleteUserBtn"><Link to="/delete" style={{textDecoration:'none',color:'inherit'}}>delete account</Link></li>
+      <ul className="optionsBox" aria-live="polite">
+        <li><p className="optionsClose" role="button" onClick={this.toggleHidden}>close</p></li>
+        <li className="logoutBtn" role="button" onClick={this.logOut}>log out</li>
+        <li className="infoBtn" role="button"><Link to="/info" style={{textDecoration:'none',color:'black'}}>info</Link></li>
+        <li className="contactBtn" role="button"><a href="mailto:mrjustinfry@gmail.com" style={{textDecoration:'none',color:'black'}}>contact</a></li>
+        <li className="deleteUserBtn" role="button"><Link to="/delete" style={{textDecoration:'none',color:'inherit'}}>delete account</Link></li>
       </ul>
     )} else {
       return (
@@ -47,6 +47,7 @@ logOut() {
           src="/menu.png"
           alt="menu"
           className="optionsBtn"
+          role="button"
           onClick={this.toggleHidden} />
       )
     }

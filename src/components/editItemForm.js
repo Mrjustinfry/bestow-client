@@ -68,7 +68,7 @@ class EditItemForm extends Component {
               name="what"
               type="text"
               component={Input}
-              ariaLabel="What"
+              aria-label="What"
               display="whatIn editIn"
               placeholder={this.props.displayWhat}
               theCardId={this.props.theCardId}
@@ -80,7 +80,7 @@ class EditItemForm extends Component {
               name="who"
               type="text"
               component={Input}
-              ariaLabel="Who"
+              aria-label="Who"
               display="whoIn editIn"
               placeholder={this.props.displayWho}
               theCardId={this.props.theCardId}
@@ -92,7 +92,7 @@ class EditItemForm extends Component {
               name="when"
               type="date"
               component={Input}
-              AriaLabel="When"
+              aria-label="When"
               display="whenIn editIn"
               placeholder={this.props.displayWhen}
               theCardId={this.props.theCardId}

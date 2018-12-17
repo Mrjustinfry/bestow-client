@@ -23,7 +23,10 @@ export default class Input extends Component {
 
         return (
             <div>
-                <label htmlFor={this.props.input.name} aria-label={this.props.input.name} style={{marginTop:'.3em',textAlign:'center'}}>
+                <label htmlFor={this.props.input.name}
+                       aria-label={this.props.input.name}
+                       style={{marginTop:'.3em',textAlign:'center'}}
+                       >
                     {this.props.label}
                     {error}
                     {warning}

@@ -12,7 +12,7 @@ export class CardItem extends Component {
     this.props.toggleHidden(this.props.item.cardId)
   }
 
-  render() {
+  render() {//ternary operator for toggling between list and card view
     return (
       <li className={this.props.item.how}>
         {this.props.isHidden

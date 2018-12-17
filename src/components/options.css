@@ -2,12 +2,13 @@
   float: right;
   padding: 1.5em;
   list-style: none;
-  height: 100em;
   position: fixed;
   top: -1em;
   right: 0;
   background-color: mintcream;
   border-left: 1px solid #f66cfb;
+  border-bottom: 1px solid #f66cfb;
+  border-bottom-left-radius: 2em;
 }
 
 .optionsClose {

@@ -66,3 +66,23 @@
   border-radius: inherit;
   padding: 1em;
 }
+
+.demo {
+  background-color: lavender;
+  border-radius: inherit;
+  padding: 1em;
+}
+
+.demoInfo {
+  background-color: mintcream;
+  border-radius: inherit;
+  padding: 1em;
+}
+
+.demoMsg {
+  color: purple;
+}
+
+.bold {
+  font-weight: bold;
+}

@@ -39,6 +39,7 @@
   cursor: pointer;
   background-color: #d39df7;
   transition-duration: 300ms;
+  color: #760aab;
 }
 
 .itemIn {
