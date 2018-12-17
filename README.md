@@ -6,7 +6,7 @@
 
 # Demo credentials
 * username: demo
-* password: demmopass
+* password: demopass
 
 ### Description
 
@@ -18,6 +18,7 @@ also a search feature if you're looking for something specific.
 ### Screenshots
 
 Landing Page:
+
 ![Landing Page](/public/screenshots/landing.png "Landing Page")
 
 List view:
@@ -37,6 +38,7 @@ Sign up:
 
 Demo Info:
 ![Demo Info](/public/screenshots/demo.png "Demo Info")
+
 
 ### Technologies
 
