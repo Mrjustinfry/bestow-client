@@ -15,7 +15,6 @@ class AddItemForm extends Component {
     super(props);
     this.state = {
         editing: true,
-        theUser: this.props.theUser
     }
     this.onSubmit = this.onSubmit.bind(this);
     this.setEditing = this.setEditing.bind(this);
@@ -113,11 +112,8 @@ onSubmit(e) {
 }
 }
 
-const mapStateToProps = state => ({
-  items: state.items
-});
 
-const AddItemFormConnected = connect(mapStateToProps, {addItem, getUserItems, getItems})(AddItemForm)
+const AddItemFormConnected = connect(null, {addItem, getUserItems, getItems})(AddItemForm)
 
 export default reduxForm({
     form: 'addItem',

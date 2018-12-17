@@ -40,3 +40,19 @@
   cursor: pointer;
   background-color: #f49ef8;
 }
+
+.formLoad {
+  animation-name: loading;
+  animation-timing-fuction: ease-in-out;
+  animation-duration: 300ms;
+  animation-iteration-count: infinite;
+}
+
+@keyframes loading {
+  from {
+    font-size: initial;
+  }
+  to {
+    font-size: large;
+  }
+}

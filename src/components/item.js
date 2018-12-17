@@ -5,7 +5,7 @@ import Landing from './landing';
 import NoItems from './noItems';
 import CardItem from './cardItem';
 
-import {addItem, toggleHidden, toggleHiddenCollection, getItems, getUserItems} from '../actions/actions';
+import { toggleHidden, toggleHiddenCollection, getItems, getUserItems} from '../actions/actions';
 
 import './list.css';
 import './card.css'
@@ -86,4 +86,4 @@ const mapStateToProps = state => ({
     searchCollection: state.bestow.searchCollection
 });
 
-export default connect(mapStateToProps, {addItem, toggleHidden, toggleHiddenCollection, getItems, getUserItems})(Item);
+export default connect(mapStateToProps, { toggleHidden, toggleHiddenCollection, getItems, getUserItems})(Item);

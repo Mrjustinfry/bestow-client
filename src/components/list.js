@@ -1,13 +1,10 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React from 'react';
 
 import Item from './item';
 
 import './list.css';
 
-class List extends Component {
-
-  render() {
+export default function List() {
     return (
       <div className="listContainer">
           <ul className="items">
@@ -16,6 +13,3 @@ class List extends Component {
       </div>
     )
 }
-}
-
-export default connect()(List);

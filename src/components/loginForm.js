@@ -56,13 +56,13 @@ constructor(props) {
     let load;
       if (this.props.error) {
           error = (
-              <div className="form-error" aria-live="polite">
+              <div className="formError" aria-live="polite">
                   {this.props.error}
               </div>
           );
       } else if(this.props.loading) {
         load = (
-          <div className="form-error" aria-live="polite">
+          <div className="formLoad" aria-live="polite">
             <p>Loading...</p>
           </div>
         )

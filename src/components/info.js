@@ -47,7 +47,8 @@ export default function Info() {
               </div>
               <footer className="infoFoot">&#169; <span className="me">Mr.Justin(Fry);</span> 2018<br />
               <a href="https://github.com/Mrjustinfry" target="_blank" rel="noopener noreferrer"><img src='./github.png' alt='github' className="contact" /></a>
-                <a href="mailto:mrjustinfry@gmail.com"><img src='./email.png' alt='email' className="contact" /></a>
+              <a href="mailto:mrjustinfry@gmail.com"><img src='./email.png' alt='email' className="contact" /></a>
+              <a href="https://www.linkedin.com/in/mrjustinfry/"><img src='./linkedin.png' alt='linkedIn' className="contact" /></a>
               </footer>
             </div>
     );

@@ -20,40 +20,7 @@ const initialState = {
   signIn: false,
   users: [],
   searchCollection: [],
-  items: [
-      /*{
-        cardId: 1,
-        hide: true,
-        who: 'karen',
-        what: 'phone charger',
-        when: '11-14-18',
-        how: 'bestowed'
-      },
-      {
-        cardId: 2,
-        hide: true,
-        who: 'John',
-        what: 'Harry Potter',
-        when: '10-31-18',
-        how: 'bestowed'
-      },
-      {
-        cardId: 3,
-        hide: true,
-        who: 'Jane',
-        what: 'Bundt pan',
-        when: '09-12-18',
-        how: 'borrowed'
-      },
-      {
-        cardId: 4,
-        hide: true,
-        who: 'Phillip',
-        what: 'Pulp Fiction',
-        when: '03-03-18',
-        how: 'bestowed'
-      },*/
-  ]
+  items: []
 };
 
 
@@ -139,7 +106,6 @@ export const itemReducer = (state=initialState, action) => {
       });
     case DELETE_ITEM_SUCCESS:
       const items = state.items.filter(item => item.cardId !== action.cardId);
-      //const itemsC = state.searchCollection.filter(item => item.cardId !== action.cardId);
           return Object.assign({}, state, {
             items: [...items],
             searchCollection: [...items],

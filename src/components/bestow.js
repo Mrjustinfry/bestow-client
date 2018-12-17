@@ -28,11 +28,5 @@ Bestow.defaultProps = {
   theUser: 'Friend'
 }
 
-const mapStateToProps = state => ({
-    theUser: state.bestow.theUser,
-    hasAuthToken: state.bestow.hasAuthToken,
-    filter: state.filter,
-    items: state.items
-});
 
-export default connect(mapStateToProps)(Bestow);
+export default connect()(Bestow);
