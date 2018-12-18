@@ -4,6 +4,8 @@
 
 [Live App Here](https://bestow-client.herokuapp.com)
 
+[Link to API repository](https://github.com/Mrjustinfry/bestow-api)
+
 # Demo credentials
 * username: demo
 * password: demopass
